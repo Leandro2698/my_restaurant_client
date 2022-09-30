@@ -2,7 +2,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import {
   Stack, IconButton, InputAdornment,
   TextField, Button, Alert, AlertTitle, List, ListItem, ListItemText,
@@ -10,26 +10,8 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { AuthContext } from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
+import authentification from '../../../apollo/mutations/auth/authentification';
 
-const LOGIN_USER = gql`
-      mutation LoginUser($loginInput: LoginInput)
-      {
-        loginUser(
-          loginInput: $loginInput
-        ) {
-            id
-            firstname
-            lastname
-            email
-            password
-            token
-            restaurants {
-              id
-            }
-          }
-
-      }
-`;
 function LoginForm() {
   const navigate = useNavigate();
   const context = useContext(AuthContext);
@@ -44,10 +26,10 @@ function LoginForm() {
     password: '',
   });
 
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+  const [loginUser, { loading }] = useMutation(authentification.LOGIN_USER, {
     update(_, { data: { loginUser: userData } }) {
       context.login(userData);
-      // console.log('useruserData', userData);
+      console.log('loginUser', userData);
       navigate('/');
     },
     onError(err) {

@@ -7,25 +7,11 @@ import {
   TextField, Button, Alert, AlertTitle, List, ListItem, ListItemText,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { AuthContext } from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
+import authentification from '../../../apollo/mutations/auth/authentification';
 
-const REGISTER_USER = gql`
-      mutation RegisterUser($registerInput: RegisterInput)
-      {
-        registerUser(
-          registerInput: $registerInput
-        ) {
-            firstname
-            lastname
-            email
-            password
-            token
-          }
-
-      }
-`;
 function RegisterForm() {
   const context = useContext(AuthContext);
 
@@ -45,10 +31,10 @@ function RegisterForm() {
     confirmPassword: '',
   });
 
-  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
+  const [registerUser, { loading }] = useMutation(authentification.REGISTER_USER, {
     update(_, { data: { registerUser: userData } }) {
       context.login(userData);
-      console.log('res', userData);
+      console.log('RegisterUser', userData);
       navigate('/');
     },
     onError(err) {
