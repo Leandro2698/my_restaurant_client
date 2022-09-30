@@ -5,7 +5,8 @@ import {
   ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar,
 } from '@mui/material';
 import { Inbox, Mail } from '@mui/icons-material';
-import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
+import MenuBar from './MenuBar';
 
 function Sidebar(props) {
   const { window, drawerWidth } = props;
@@ -20,29 +21,42 @@ function Sidebar(props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <Inbox /> : <Mail />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to="/"
+          >
+            <ListItemIcon>
+              <Mail />
+            </ListItemIcon>
+            <ListItemText primary="Overview" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to="/acount"
+          >
+            <ListItemIcon>
+              <Mail />
+            </ListItemIcon>
+            <ListItemText primary="Acount" />
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <Inbox /> : <Mail />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to="/product"
+          >
+            <ListItemIcon>
+              <Inbox />
+            </ListItemIcon>
+            <ListItemText primary="Product" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
@@ -51,7 +65,7 @@ function Sidebar(props) {
 
   return (
     <>
-      <Navbar drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} />
+      <MenuBar drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} />
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
