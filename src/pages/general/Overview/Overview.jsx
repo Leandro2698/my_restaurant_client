@@ -1,17 +1,20 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Container, Grid } from '@mui/material';
+import Total from './Total';
+import SalesByProduct from './SalesByProduct';
 
 function Overview() {
   return (
-    <>
-      <h1>Overview</h1>
-      <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-        enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-        imperdiet. Semper risus in hendrerit gravida
-      </Typography>
-    </>
+    <Container maxWidth={false}>
+      <Grid
+        container
+        spacing={3}
+      >
+        <Total />
+        <Total />
+        <SalesByProduct />
+      </Grid>
+    </Container>
   );
 }
 export default Overview;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Toolbar } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import Sidebar from '../../components/Sidebar';
+import Sidebar from '../../components/MainSidebar';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 const drawerWidth = 240;
@@ -12,7 +12,7 @@ function MainLayout() {
       <Sidebar drawerWidth={drawerWidth} />
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
         <h1>MAIN LAYOUT Outlet</h1>
