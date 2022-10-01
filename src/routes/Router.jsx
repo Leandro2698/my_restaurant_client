@@ -20,12 +20,11 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route element={<RequireAuth />}>
+          {/* we want to protect these routes */}
           <Route path="/" element={<MainLayout />}>
-            {/* we want to protect these routes */}
             <Route path="/" element={<Overview />} />
             <Route path="acount" element={<Account />} />
             <Route path="/product" element={<Product />} />
-            {/* catch all */}
           </Route>
         </Route>
         {/* public routes */}
@@ -34,6 +33,7 @@ function Router() {
           <Route path="/register" element={<Register />} />
         </Route>
 
+        {/* catch all */}
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>

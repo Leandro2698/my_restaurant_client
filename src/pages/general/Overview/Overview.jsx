@@ -5,14 +5,14 @@ import SalesByProduct from './SalesByProduct';
 
 function Overview() {
   return (
-    <Container maxWidth={false}>
+    <Container>
       <Grid
         container
         spacing={3}
       >
-        <Total />
-        <Total />
         <SalesByProduct />
+        <Total />
+        <Total />
       </Grid>
     </Container>
   );

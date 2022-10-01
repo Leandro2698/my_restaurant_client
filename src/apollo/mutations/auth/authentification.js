@@ -29,9 +29,6 @@ authentification.LOGIN_USER = gql`
             email
             password
             token
-            restaurants {
-              id
-            }
           }
 
       }

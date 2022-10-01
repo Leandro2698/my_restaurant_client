@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import MiniCard from '../../../components/MiniCard';
+import MiniCard from '../../../components/Cards/MiniCard';
 
 function Total() {
   return (
