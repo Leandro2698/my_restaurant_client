@@ -1,34 +1,22 @@
 import React, { useContext } from 'react';
-import { Grid } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import TableCard from '../../../components/Cards/TableCard';
-import getRestaurantsUser from '../../../apollo/queries/user/restaurants/getRestaurantsUser';
-import { AuthContext } from '../../../context/authContext';
+import restaurantUser from '../../../apollo/queries/user/restaurants/Restaurant';
+import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function SalesByProduct() {
-  const { user } = useContext(AuthContext);
-  const userId = user.id;
-  const { loading, error, data } = useQuery(getRestaurantsUser.MY_RESTAURANTS, {
-    variables: { userId },
+  const { restaurantActiveId } = useContext(RestaurantContext);
+  const { loading, error, data } = useQuery(restaurantUser.GET_PRODUCTS, {
+    variables: { restaurantId: restaurantActiveId },
 
   });
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  const restaurantsUser = data.getUser.restaurants;
-  // console.log('restrestaurantsUser', restaurantsUser);
-  // console.log('saleprod data', data.getUser.restaurants.map((e) => e.id));
+
+  console.log('data', data);
   return (
 
-    <Grid
-      item
-      lg={8}
-      md={12}
-      xl={9}
-      xs={12}
-    >
-
-      <TableCard restaurants={restaurantsUser} />
-    </Grid>
+    <TableCard />
   );
 }
 export default SalesByProduct;

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
-  Box, CssBaseline,
+  Box, CssBaseline, Typography,
 } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { useTheme, styled } from '@mui/material/styles';
-import NavGroup from './sidebar/Sidebar';
-import Header from './header/Header';
+import Sidebar from './sidebar';
+import Header from './header';
+
+import { RestaurantContext } from '../../context/RestaurantContext';
 
 const drawerWidth = 260;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -17,13 +19,15 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
       duration: theme.transitions.duration.leavingScreen,
     }),
     [theme.breakpoints.up('md')]: {
-      marginLeft: -(drawerWidth - 20),
+      marginLeft: -(drawerWidth - 30),
       width: `calc(100% - ${drawerWidth}px)`,
+      marginRight: '30px',
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '20px',
       width: `calc(100% - ${drawerWidth}px)`,
       padding: '16px',
+      marginRight: '20px',
     },
     [theme.breakpoints.down('sm')]: {
       marginLeft: '10px',
@@ -51,29 +55,46 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 }));
 function MainLayout() {
   const theme = useTheme();
+  const {
+    restaurantActiveId, userRestaurants, restaurant, loading, error,
+  } = useContext(RestaurantContext);
   const [open, setOpen] = useState(true);
-
   const handleDrawerToggle = () => {
     setOpen(!open);
   };
 
-  return (
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
 
+  return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Header drawerOpen={open} drawerToggle={handleDrawerToggle} theme={theme} />
-      <NavGroup drawerOpen={open} drawerToggle={handleDrawerToggle} drawerWidth={drawerWidth} />
+      <Header
+        drawerOpen={open}
+        drawerToggle={handleDrawerToggle}
+        theme={theme}
+      />
+      <Sidebar
+        restaurantId={restaurantActiveId}
+        restaurants={userRestaurants}
+        drawerOpen={open}
+        drawerToggle={handleDrawerToggle}
+        drawerWidth={drawerWidth}
+      />
+
       <Main
         sx={{
           minHeight: 'calc(100vh - 88px)',
           flexGrow: 1,
           marginTop: '88px',
+          bgcolor: '#EBF3FF',
+          borderRadius: '5px',
+          padding: '20px',
         }}
         theme={theme}
         open={open}
       >
-        <h1>MainLAYOU Outlet</h1>
-
+        <Typography variant="h4" color="initial">{loading ? 'load' : restaurant.data.name}</Typography>
         <Outlet />
       </Main>
     </Box>

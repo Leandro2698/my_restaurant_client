@@ -15,11 +15,10 @@ import {
   Tooltip,
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { PropTypes } from 'prop-types';
+// import { PropTypes } from 'prop-types';
 
-function TableCard(props) {
-  const { restaurants } = props;
-  console.log('restaurant', restaurants);
+function TableCard() {
+  // const { restaurants } = props;
   return (
     <Card sx={{ height: '100%' }}>
       <CardHeader />
@@ -49,22 +48,24 @@ function TableCard(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {restaurants.map((restaurant) => (
-              <TableRow
-                hover
-                key={restaurant.id}
-              >
-                <TableCell>
-                  {restaurant.status}
-                </TableCell>
-                <TableCell>
-                  {restaurant.name}
-                </TableCell>
-                <TableCell>
-                  {restaurant.create_at}
-                </TableCell>
-              </TableRow>
-            ))}
+            {/* {restaurants.map((restaurant) => ( */}
+            <TableRow
+                // hover
+                // key={restaurant.id}
+                // ttot
+              sx={{ color: 'd' }}
+            >
+              <TableCell>
+                {/* {restaurant.status} */}
+              </TableCell>
+              <TableCell>
+                {/* {restaurant.name} */}
+              </TableCell>
+              <TableCell>
+                {/* {restaurant.create_at} */}
+              </TableCell>
+            </TableRow>
+            {/* ))} */}
           </TableBody>
         </Table>
       </Box>
@@ -88,7 +89,7 @@ function TableCard(props) {
   );
 }
 TableCard.propTypes = {
-  restaurants: PropTypes.array.isRequired,
+  // restaurants: PropTypes.array.isRequired,
 
 };
 

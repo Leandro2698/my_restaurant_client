@@ -35,7 +35,7 @@ function RegisterForm() {
     update(_, { data: { registerUser: userData } }) {
       context.login(userData);
       console.log('RegisterUser', userData);
-      navigate('/');
+      navigate('/welcom');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.errors);

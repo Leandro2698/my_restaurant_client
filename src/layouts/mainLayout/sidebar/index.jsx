@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,25 +6,27 @@ import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import {
   Box,
-  ButtonBase,
-  Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography, useMediaQuery,
+  Button,
+
+  Divider, Drawer, List,
+  ListItemButton, ListItemIcon, ListItemText,
+  Typography, useMediaQuery,
 } from '@mui/material';
 // import { Send } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Logo from '../../../components/Logo';
+import ChooseRestaurant from './ChooseRestaurant';
 
 function Sidebar(props) {
-  const { drawerWidth, drawerOpen, drawerToggle } = props;
-  console.log('drawdrawerWidth', drawerWidth);
+  const {
+    drawerWidth, drawerOpen, drawerToggle, restaurants, restaurantId,
+  } = props;
   const theme = useTheme();
 
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
-  const container = window !== undefined ? () => window.document.body : undefined;
-
   return (
     <Box component="nav" sx={{ flexShrink: { md: 0 }, width: matchUpMd ? drawerWidth : 'auto' }} aria-label="mailbox folders">
       <Drawer
-        container={container}
         variant={matchUpMd ? 'persistent' : 'temporary'}
         anchor="left"
         open={drawerOpen}
@@ -31,7 +34,6 @@ function Sidebar(props) {
         sx={{
           '& .MuiDrawer-paper': {
             width: drawerWidth,
-            background: '#ffc2c2',
             color: theme.palette.text.primary,
             borderRight: 'none',
             [theme.breakpoints.up('md')]: {
@@ -45,14 +47,27 @@ function Sidebar(props) {
 
         <Box sx={{ display: { xs: 'block', md: 'none' } }}>
           <Box sx={{ display: 'flex', p: 2, mx: 'auto' }}>
-            <ButtonBase disableRipple component={Link} to="/">
+            <Button>
               <Logo />
               {' '}
               Logo
-            </ButtonBase>
+            </Button>
           </Box>
+
         </Box>
-        <Box style={{
+        <Box sx={{
+          paddingLeft: '16px',
+          paddingRight: '16px',
+        }}
+        >
+          <Typography variant="h6" display="block" gutterBottom>
+            Restaurants
+          </Typography>
+          <ChooseRestaurant restaurantId={restaurantId} restaurants={restaurants} />
+
+          <Divider />
+        </Box>
+        <Box sx={{
           height: matchUpMd ? 'calc(100vh - 56px)' : 'calc(100vh - 88px)',
           paddingLeft: '16px',
           paddingRight: '16px',
@@ -133,5 +148,7 @@ Sidebar.propTypes = {
   drawerWidth: PropTypes.number.isRequired,
   drawerOpen: PropTypes.bool.isRequired,
   drawerToggle: PropTypes.func.isRequired,
+  restaurants: PropTypes.array.isRequired,
+  restaurantId: PropTypes.string.isRequired,
 };
 export default Sidebar;

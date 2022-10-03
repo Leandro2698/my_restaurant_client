@@ -1,19 +1,13 @@
 import React from 'react';
-import { Grid } from '@mui/material';
 import MiniCard from '../../../components/Cards/MiniCard';
+// import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function Total() {
+  // const { restaurantActiveId } = useContext(RestaurantContext);
+  // console.log('restrestaurantActiveId', restaurantActiveId);
   return (
 
-    <Grid
-      item
-      lg={3}
-      sm={6}
-      xl={3}
-      xs={12}
-    >
-      <MiniCard />
-    </Grid>
+    <MiniCard />
   );
 }
 export default Total;
