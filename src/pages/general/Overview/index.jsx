@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Grid } from '@mui/material';
 import Total from './Total';
 import SalesByProduct from './SalesByProduct';
+import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function Overview() {
+  const { restaurant } = useContext(RestaurantContext);
+  // console.log('restrestaurant', restaurant);
   return (
     <Grid
       container
@@ -47,7 +50,7 @@ function Overview() {
         xs={12}
       >
 
-        <SalesByProduct />
+        <SalesByProduct restaurant={restaurant} />
       </Grid>
     </Grid>
 

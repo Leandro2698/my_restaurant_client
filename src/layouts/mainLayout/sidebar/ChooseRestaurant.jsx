@@ -10,9 +10,7 @@ import Zoom from '@mui/material/Zoom';
 import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function ChooseRestaurant(props) {
-  const {
-    restaurants, restaurantId,
-  } = props;
+  const { restaurants, restaurantId } = props;
   const theme = useTheme();
   const { changeRestaurant } = useContext(RestaurantContext);
   const [selected, setSelected] = useState(restaurantId);
@@ -68,12 +66,6 @@ function ChooseRestaurant(props) {
     </Box>
 
   );
-  // return (
-  //   <>
-
-  //     Add restaurant todo button
-  //   </>
-  // );
 }
 ChooseRestaurant.propTypes = {
   restaurants: PropTypes.array.isRequired,

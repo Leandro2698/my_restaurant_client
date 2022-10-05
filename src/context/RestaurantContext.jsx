@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import React, {
   createContext, useEffect, useState,
 } from 'react';
-import restaurantUser from '../apollo/queries/user/restaurants/Restaurant';
+import restaurantUser from '../graphql/queries/user/restaurants/Restaurant';
 
 const RestaurantContext = createContext({});
 

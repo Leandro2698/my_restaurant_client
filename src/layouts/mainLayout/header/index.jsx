@@ -5,6 +5,7 @@ import { Menu } from '@mui/icons-material';
 import {
   AppBar, Avatar, Box, ButtonBase, Toolbar,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Logo from '../../../components/Logo';
 import ProfileHeader from './ProfileHeader';
 
@@ -37,7 +38,9 @@ function Header(props) {
           }}
         >
           <Box component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
-            <Logo />
+            <ButtonBase disableRipple component={Link} to="/">
+              <Logo />
+            </ButtonBase>
           </Box>
           <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
             <Avatar

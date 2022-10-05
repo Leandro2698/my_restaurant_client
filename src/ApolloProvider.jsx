@@ -7,7 +7,7 @@ import App from './App';
 import Theme from './theme/Theme';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:8880',
+  uri: 'http://localhost:4003',
 });
 
 const client = new ApolloClient({

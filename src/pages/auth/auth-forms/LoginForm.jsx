@@ -10,7 +10,7 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { AuthContext } from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
-import authentification from '../../../apollo/mutations/auth/authentification';
+import authentification from '../../../graphql/mutations/auth/authentification';
 
 function LoginForm() {
   const navigate = useNavigate();

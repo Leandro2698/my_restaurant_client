@@ -1,31 +1,38 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
   Box,
-  Button,
-
+  ButtonBase,
   Divider, Drawer, List,
   ListItemButton, ListItemIcon, ListItemText,
   Typography, useMediaQuery,
 } from '@mui/material';
-// import { Send } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Logo from '../../../components/Logo';
 import ChooseRestaurant from './ChooseRestaurant';
+import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function Sidebar(props) {
   const {
-    drawerWidth, drawerOpen, drawerToggle, restaurants, restaurantId,
+    drawerWidth,
+    drawerOpen,
+    drawerToggle,
+    restaurants,
   } = props;
-  const theme = useTheme();
 
+  const theme = useTheme();
+  const { restaurantActiveId } = useContext(RestaurantContext);
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
   return (
-    <Box component="nav" sx={{ flexShrink: { md: 0 }, width: matchUpMd ? drawerWidth : 'auto' }} aria-label="mailbox folders">
+    <Box
+      component="nav"
+      sx={{ flexShrink: { md: 0 }, width: matchUpMd ? drawerWidth : 'auto' }}
+      aria-label="mailbox folders"
+    >
       <Drawer
         variant={matchUpMd ? 'persistent' : 'temporary'}
         anchor="left"
@@ -47,11 +54,9 @@ function Sidebar(props) {
 
         <Box sx={{ display: { xs: 'block', md: 'none' } }}>
           <Box sx={{ display: 'flex', p: 2, mx: 'auto' }}>
-            <Button>
+            <ButtonBase disableRipple component={Link} to="/">
               <Logo />
-              {' '}
-              Logo
-            </Button>
+            </ButtonBase>
           </Box>
 
         </Box>
@@ -63,7 +68,8 @@ function Sidebar(props) {
           <Typography variant="h6" display="block" gutterBottom>
             Restaurants
           </Typography>
-          <ChooseRestaurant restaurantId={restaurantId} restaurants={restaurants} />
+
+          <ChooseRestaurant restaurantId={restaurantActiveId} restaurants={restaurants} />
 
           <Divider />
         </Box>
@@ -149,6 +155,5 @@ Sidebar.propTypes = {
   drawerOpen: PropTypes.bool.isRequired,
   drawerToggle: PropTypes.func.isRequired,
   restaurants: PropTypes.array.isRequired,
-  restaurantId: PropTypes.string.isRequired,
 };
 export default Sidebar;

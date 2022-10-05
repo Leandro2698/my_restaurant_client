@@ -10,7 +10,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useMutation } from '@apollo/client';
 import { AuthContext } from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
-import authentification from '../../../apollo/mutations/auth/authentification';
+import authentification from '../../../graphql/mutations/auth/authentification';
 
 function RegisterForm() {
   const context = useContext(AuthContext);
@@ -34,8 +34,7 @@ function RegisterForm() {
   const [registerUser, { loading }] = useMutation(authentification.REGISTER_USER, {
     update(_, { data: { registerUser: userData } }) {
       context.login(userData);
-      console.log('RegisterUser', userData);
-      navigate('/welcom');
+      navigate('/first-restaurant');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.errors);

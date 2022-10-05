@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate, useLocation } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import {
   Button, Typography, Container, Box,
 } from '@mui/material';
+import { AuthContext } from '../context/authContext';
+import Img404 from '../asset/images/404page.jpg';
 
 // ----------------------------------------------------------------------
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -19,6 +21,9 @@ const ContentStyle = styled('div')(({ theme }) => ({
 }));
 // ----------------------------------------------------------------------
 function Page404() {
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
+
   return (
     <Container>
       <ContentStyle sx={{ textAlign: 'center', alignItems: 'center' }}>
@@ -33,13 +38,19 @@ function Page404() {
 
         <Box
           component="img"
-          src="/static/404page.jpg"
+          src={Img404}
           sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
         />
+        {user ? (
 
-        <Button to="/" size="large" variant="contained" component={RouterLink}>
-          Go to Home
-        </Button>
+          <Button size="large" variant="contained" component={RouterLink} to="/">
+            Go home
+          </Button>
+
+        ) : (
+
+          <Navigate to="/" state={{ from: location }} replace />
+        )}
       </ContentStyle>
     </Container>
   );

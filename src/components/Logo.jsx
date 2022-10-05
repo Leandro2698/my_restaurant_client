@@ -1,68 +1,20 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/jsx-no-useless-fragment */
-import PropTypes from 'prop-types';
+// material-ui
+// import { useTheme } from '@mui/material/styles';
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-// @mui
-import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
 
-// ----------------------------------------------------------------------
-function Logo({ disabledLink = false, sx }) {
-  const theme = useTheme();
+function Logo() {
+  // const theme = useTheme();
 
-  const PRIMARY_LIGHT = theme.palette.primary.light;
+  return (
+    <svg width="92" height="32" viewBox="0 0 92 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-  const PRIMARY_MAIN = theme.palette.primary.main;
+      <path d="M16.0345 13.9459H29.9607C29.4517 6.48672 23.4936 0.528619 16.0345 0.0196533V13.9459Z" fill="#5048E5" />
+      <path d="M26.0617 25.1457C28.3081 22.7095 29.7605 19.5295 30 16.0148H16.9309L26.0617 25.1457Z" fill="#5048E5" />
+      <path d="M13.9655 14.5521V0.0196533C6.16448 0.551895 0 7.04431 0 14.9803C0 18.75 1.39397 22.1922 3.69 24.8276L13.9655 14.5521Z" fill="#5048E5" />
+      <path d="M14.6969 16.7462L5.15277 26.2904C7.78812 28.5864 11.2304 29.9804 15 29.9804C18.6155 29.9804 21.929 28.6981 24.5178 26.5671L14.6969 16.7462Z" fill="#1EAE70" />
+    </svg>
 
-  const PRIMARY_DARK = theme.palette.primary.dark;
-
-  const logo = (
-    <Box sx={{ width: 40, height: 40, ...sx }}>
-      <svg
-        xmlns="http://www.w3.org/1999/xlink"
-        x="0px"
-        y="0px"
-        viewBox="0 0 58 58"
-        xmlSpace="preserve"
-      >
-        <defs>
-          <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">
-            <stop offset="0%" stopColor={PRIMARY_DARK} />
-            <stop offset="100%" stopColor={PRIMARY_MAIN} />
-          </linearGradient>
-          <linearGradient id="BG2" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor={PRIMARY_LIGHT} />
-            <stop offset="100%" stopColor={PRIMARY_MAIN} />
-          </linearGradient>
-          <linearGradient id="BG3" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor={PRIMARY_LIGHT} />
-            <stop offset="100%" stopColor={PRIMARY_MAIN} />
-          </linearGradient>
-        </defs>
-        <g fill={PRIMARY_MAIN} fillRule="evenodd" stroke="none" strokeWidth="1">
-          <path fill="url(#BG1)" d="M31,26.962h26.924C56.94,12.541,45.421,1.022,31,0.038V26.962z" />
-          <path fill="url(#BG2)" d="M50.386,48.615c4.343-4.71,7.151-10.858,7.614-17.653H32.733L50.386,48.615z" />
-          <path fill="url(#BG3)" d="M27,28.134V0.038C11.918,1.067,0,13.619,0,28.962C0,36.25,2.695,42.905,7.134,48L27,28.134z" />
-          <path
-            fill="url(#BG3)"
-            d="M28.414,32.376L9.962,50.828c5.095,4.439,11.75,7.134,19.038,7.134c6.99,0,13.396-2.479,18.401-6.599L28.414,32.376z"
-          />
-        </g>
-      </svg>
-    </Box>
   );
-
-  if (disabledLink) {
-    return <>{logo}</>;
-  }
-
-  return <RouterLink to="/">{logo}</RouterLink>;
 }
-export default Logo;
-Logo.propTypes = {
-  disabledLink: PropTypes.bool,
-  sx: PropTypes.object,
-};
 
-Logo.defaultProps = { disabledLink: undefined, sx: undefined };
+export default Logo;
