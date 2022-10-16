@@ -20,7 +20,6 @@ const headerSX = {
 const MainCard = forwardRef(
   (
     {
-      border = true,
       boxShadow,
       children,
       content = true,
@@ -38,16 +37,13 @@ const MainCard = forwardRef(
       ref={ref}
       {...others}
       sx={{
-        border: border ? '1px solid' : 'none',
         borderColor: 'rgba(116, 155, 210, 0.72)',
-        ':hover': {
-          boxShadow: boxShadow ? shadow || '0 2px 14px 0 rgb(32 40 45 / 8%)' : 'inherit',
-        },
         ...sx,
       }}
+      elevation={1}
     >
       {/* card header and action */}
-      {!darkTitle && title && <CardHeader sx={headerSX} title={title} action={secondary} />}
+      {title && <CardHeader sx={headerSX} title={title} action={secondary} />}
       {darkTitle && title && (
         <CardHeader sx={headerSX} title={<Typography variant="h3">{title}</Typography>} action={secondary} />
       )}
@@ -62,6 +58,7 @@ const MainCard = forwardRef(
         </CardContent>
       )}
       {!content && children}
+
     </Card>
   )
   ,

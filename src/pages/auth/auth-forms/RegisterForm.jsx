@@ -20,9 +20,6 @@ function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
 
-  function registerUserCallback() {
-    registerUser();
-  }
   const { onChange, onSubmit, values } = useForm(registerUserCallback, {
     firstname: '',
     lastname: '',
@@ -34,13 +31,17 @@ function RegisterForm() {
   const [registerUser, { loading }] = useMutation(authentification.REGISTER_USER, {
     update(_, { data: { registerUser: userData } }) {
       context.login(userData);
-      navigate('/first-restaurant');
+      navigate('/');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: { registerInput: values },
   });
+
+  function registerUserCallback() {
+    registerUser();
+  }
 
   return (
     <Stack spacing={3}>

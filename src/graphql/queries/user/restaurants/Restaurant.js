@@ -3,29 +3,25 @@ import { gql } from '@apollo/client';
 const restaurantUser = {};
 
 restaurantUser.GET_RESTAURANTS = gql`
-      query GetUsers($userId: ID!) {
-        getUser(userId: $userId) {
-          restaurants {
-            id
-            name
-            description
-            address
-            city
-            country
-            create_at
-            status
-            employees {
-              id
-            }
-            products {
-              id
-            }
-            turnoversYears {
-              id
-            }
-          } 
+        query GetUser($userId: ID!) {
+      getUser(userId: $userId) {
+      restaurants {
+        id
+        name
+        products {
+          id
         }
-      } 
+        turnoversRestaurant {
+          id
+        }
+        sales {
+          id
+        }
+        isRestaurantSelected @client
+      
+      }
+    } 
+  }
 `;
 restaurantUser.GET_PRODUCTS = gql`
       query GetRestaurant($restaurantId: ID!) {
@@ -33,12 +29,15 @@ restaurantUser.GET_PRODUCTS = gql`
                 products {
                   id
                   name
-                  year
+                  turnoverProduct
+                  createdAt
                   unitProductSold
                   unitSalePrice
-                  turnoverProduct
+                  stock
                   category
                   status
+                  delivery
+                  omSite
                 }
 
   }

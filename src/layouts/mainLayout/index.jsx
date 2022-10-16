@@ -1,16 +1,12 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable import/no-cycle */
+import React, { useState } from 'react';
 import {
   Box, CssBaseline,
 } from '@mui/material';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useTheme, styled } from '@mui/material/styles';
-import { useQuery } from '@apollo/client';
 import Sidebar from './sidebar';
 import Header from './header';
-import { AuthContext } from '../../context/authContext';
-import restaurantUser from '../../graphql/queries/user/restaurants/Restaurant';
-
-import { RestaurantProvider } from '../../context/RestaurantContext';
 
 const drawerWidth = 260;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -58,61 +54,40 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 }));
 function MainLayout() {
   const theme = useTheme();
-  const location = useLocation();
-  const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
 
-  const { loading, error, data } = useQuery(restaurantUser.GET_RESTAURANTS, {
-    variables: { userId: user.id },
-  });
   const handleDrawerToggle = () => {
     setOpen(!open);
   };
 
-  if (loading) return 'Loading...';
-
-  if (error) return `Error main! ${error.message}`;
-
-  const { restaurants } = data.getUser;
-
   return (
 
     <Box sx={{ display: 'flex' }}>
-      {restaurants.length > 0 ? (
-        <RestaurantProvider restaurants={restaurants}>
-
-          <>
-            <CssBaseline />
-            <Header
-              drawerOpen={open}
-              drawerToggle={handleDrawerToggle}
-              theme={theme}
-            />
-            <Sidebar
-            // restaurantId={restaurantActiveId}
-              restaurants={restaurants}
-              drawerOpen={open}
-              drawerToggle={handleDrawerToggle}
-              drawerWidth={drawerWidth}
-            />
-            <Main
-              sx={{
-                minHeight: 'calc(100vh - 88px)',
-                flexGrow: 1,
-                marginTop: '88px',
-                bgcolor: 'rgba(116, 155, 210, 0.4)',
-                borderRadius: '5px',
-                padding: '20px',
-              }}
-              theme={theme}
-              open={open}
-            >
-              <Outlet />
-            </Main>
-          </>
-        </RestaurantProvider>
-      )
-        : <Navigate to="/first-restaurant" state={{ from: location }} replace /> }
+      <CssBaseline />
+      <Header
+        drawerOpen={open}
+        drawerToggle={handleDrawerToggle}
+        theme={theme}
+      />
+      <Sidebar
+        drawerOpen={open}
+        drawerToggle={handleDrawerToggle}
+        drawerWidth={drawerWidth}
+      />
+      <Main
+        sx={{
+          minHeight: 'calc(100vh - 88px)',
+          flexGrow: 1,
+          marginTop: '88px',
+          bgcolor: 'rgba(116, 155, 210, 0.4)',
+          borderRadius: '5px',
+          padding: '20px',
+        }}
+        theme={theme}
+        open={open}
+      >
+        <Outlet />
+      </Main>
     </Box>
   );
 }

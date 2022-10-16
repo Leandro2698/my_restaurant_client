@@ -1,55 +1,44 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/forbid-prop-types */
 import { useQuery } from '@apollo/client';
 import React, {
   createContext, useEffect, useState,
 } from 'react';
-import restaurantUser from '../graphql/queries/user/restaurants/Restaurant';
+import PropTypes from 'prop-types';
+import restaurantUser from '../graphql/queries/user/restaurants/restaurant';
 
 const RestaurantContext = createContext({});
 
 function RestaurantProvider(props) {
-  const { restaurants } = props;
-  const restaurantIdStorage = window.localStorage.getItem('restaurantId');
+  const { userId, userRestaurants } = props;
+  const [restaurants, setRestaurants] = useState(userRestaurants);
 
-  let initialState = restaurants[0].id;
-
-  if (restaurantIdStorage !== null) {
-    initialState = restaurantIdStorage;
-  }
-
-  const [selectedRestaurantId, setSelectedRestaurantId] = useState(initialState);
-
-  useEffect(() => {
-    const restaurantId = window.localStorage.getItem('restaurantId');
-    if (restaurantId !== null) setSelectedRestaurantId((restaurantId));
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem('restaurantId', (selectedRestaurantId));
-  }, [selectedRestaurantId]);
-  function changeRestaurant(id) {
-    setSelectedRestaurantId(id);
-  }
-  const { loading, error, data } = useQuery(restaurantUser.GET_RESTAURANT, {
-    variables: { restaurantId: selectedRestaurantId },
-
+  const { loading, error, data } = useQuery(restaurantUser.GET_RESTAURANTS, {
+    variables: { userId },
   });
+
+  useEffect(() => {
+    if (!loading) {
+      setRestaurants(data.getUser.restaurants);
+    }
+  }, [data]);
   return (
     <RestaurantContext.Provider
       value={{
-        changeRestaurant,
-        restaurantActiveId: selectedRestaurantId,
         userRestaurants: restaurants,
-        restaurant: data,
-        error,
         loading,
+        error,
 
       }}
       {...props}
     />
   );
 }
+
+RestaurantProvider.propTypes = {
+  userId: PropTypes.string.isRequired,
+  userRestaurants: PropTypes.array.isRequired,
+};
 
 export { RestaurantContext, RestaurantProvider };

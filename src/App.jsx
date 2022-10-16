@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import { AuthProvider } from './context/authContext';
 import Router from './routes/Router';

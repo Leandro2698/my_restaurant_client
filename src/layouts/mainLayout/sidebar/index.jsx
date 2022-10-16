@@ -1,5 +1,7 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable react/forbid-prop-types */
 import React, { useContext } from 'react';
+
 import PropTypes from 'prop-types';
 
 // material-ui
@@ -12,8 +14,9 @@ import {
   Typography, useMediaQuery,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+
 import Logo from '../../../components/Logo';
-import ChooseRestaurant from './ChooseRestaurant';
+import RestaurantNav from './RestaurantNav';
 import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function Sidebar(props) {
@@ -21,11 +24,11 @@ function Sidebar(props) {
     drawerWidth,
     drawerOpen,
     drawerToggle,
-    restaurants,
   } = props;
+  const { userRestaurants } = useContext(RestaurantContext);
 
   const theme = useTheme();
-  const { restaurantActiveId } = useContext(RestaurantContext);
+
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
   return (
     <Box
@@ -69,8 +72,7 @@ function Sidebar(props) {
             Restaurants
           </Typography>
 
-          <ChooseRestaurant restaurantId={restaurantActiveId} restaurants={restaurants} />
-
+          <RestaurantNav restaurants={userRestaurants} />
           <Divider />
         </Box>
         <Box sx={{
@@ -126,7 +128,9 @@ function Sidebar(props) {
             </ListItemButton>
             <ListItemButton
               sx={{
-                mb: 0.5, backgroundColor: 'transparent !important', py: 1,
+                mb: 0.5,
+                backgroundColor: 'transparent !important',
+                py: 1,
               }}
               component={Link}
               to="/product"
@@ -138,6 +142,26 @@ function Sidebar(props) {
                 primary={(
                   <Typography variant="h5" color="inherit">
                     Product
+                  </Typography>
+                  )}
+              />
+            </ListItemButton>
+            <ListItemButton
+              sx={{
+                mb: 0.5,
+                backgroundColor: 'transparent !important',
+                py: 1,
+              }}
+              component={Link}
+              to="/restaurants"
+            >
+              <ListItemIcon>
+                todo
+              </ListItemIcon>
+              <ListItemText
+                primary={(
+                  <Typography variant="h5" color="inherit">
+                    restaurants
                   </Typography>
                   )}
               />
@@ -154,6 +178,5 @@ Sidebar.propTypes = {
   drawerWidth: PropTypes.number.isRequired,
   drawerOpen: PropTypes.bool.isRequired,
   drawerToggle: PropTypes.func.isRequired,
-  restaurants: PropTypes.array.isRequired,
 };
 export default Sidebar;
