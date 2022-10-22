@@ -1,25 +1,34 @@
 {
     "env": {
-        "browser": true,
-        "es2021": true
+      "browser": true,
+      "es2021": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-    ],
+    "extends": ["react-app", "react-app/jest", "airbnb", "airbnb-typescript", "plugin:react/jsx-runtime", "prettier"],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": "./tsconfig.json"
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react", "@typescript-eslint"],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [ ".js", ".jsx"] }],
-        "no-underscore-dangle": "off"
+      "no-underscore-dangle": "off",
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "import/prefer-default-export": "off",
+      "react-hooks/exhaustive-deps": ["error"],
+      "react/jsx-no-bind": [
+        "warn",
+        {
+          "ignoreDOMComponents": false,
+          "ignoreRefs": false,
+          "allowArrowFunctions": true,
+          "allowFunctions": true,
+          "allowBind": false
+        }
+      ],
+      "react/jsx-props-no-spreading": ["off"]
     }
-}
-  
+  }

@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material';
 
-const Theme = createTheme({
+const theme = createTheme({
   // https://mui.com/material-ui/customization/typography/
   typography: {
     fontFamily: 'Poppins,sans-serif',
@@ -9,4 +9,4 @@ const Theme = createTheme({
 
 });
 
-export default Theme;
+export default theme;
