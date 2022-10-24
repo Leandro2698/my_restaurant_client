@@ -23,3 +23,6 @@ export type Restaurants = Array<Restaurant>;
 export type RestaurantNavProps = {
   restaurants: Restaurants;
 };
+export type SubMenuProps = {
+  items: any;
+};

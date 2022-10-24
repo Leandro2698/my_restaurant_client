@@ -43,8 +43,8 @@ function ProfileHeader() {
           alignItems: "center",
           borderRadius: "27px",
           transition: "all .2s ease-in-out",
-          borderColor: theme.palette.primary.light,
-          backgroundColor: theme.palette.primary.light,
+          borderColor: theme.palette.background.default,
+          backgroundColor: theme.palette.background.default,
           '&[aria-controls="menu-list-grow"], &:hover': {
             borderColor: theme.palette.primary.main,
             background: `${theme.palette.primary.main}!important`,
@@ -63,13 +63,12 @@ function ProfileHeader() {
               width: "34px",
               height: "34px",
               fontSize: "1.2rem",
-              margin: "8px 0 8px 8px !important",
+              margin: "8px 8px 8px 8px !important",
               cursor: "pointer",
             }}
             ref={anchorRef}
             aria-controls={open ? "menu-list-grow" : undefined}
             aria-haspopup="true"
-            color="inherit"
           />
         }
         variant="outlined"

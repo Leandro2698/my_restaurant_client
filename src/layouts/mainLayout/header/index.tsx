@@ -30,18 +30,22 @@ function Header(props: HeaderProps) {
             },
           }}
         >
-          <Box component="span" sx={{ display: { xs: "none", md: "block" }, flexGrow: 1 }}>
+          <Box component="span" sx={{ display: { xs: "none", md: "flex", alignItems: "center" }, flexGrow: 1 }}>
             <ButtonBase disableRipple component={Link} to="/">
               <Logo />
             </ButtonBase>
           </Box>
-          <ButtonBase sx={{ borderRadius: "12px", overflow: "hidden" }}>
-            <Avatar variant="rounded" color="inherit" aria-label="menu" onClick={drawerToggle}>
-              <Menu />
-            </Avatar>
-          </ButtonBase>
         </Box>
-        <Box sx={{ flexGrow: 1 }} />
+        <ButtonBase sx={{ borderRadius: "4px", overflow: "hidden" }}>
+          <Avatar
+            variant="rounded"
+            sx={{ backgroundColor: "rgba(116, 155, 210, 0.2)" }}
+            aria-label="menu"
+            onClick={drawerToggle}
+          >
+            <Menu color="primary" />
+          </Avatar>
+        </ButtonBase>
         <Box sx={{ flexGrow: 1 }} />
         <ProfileHeader />
       </Toolbar>

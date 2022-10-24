@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Avatar, Box, Button, ButtonBase, Chip, Tooltip } from "@mui/material";
+import { Box, Button, Chip, IconButton, Tooltip } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { Add } from "@mui/icons-material";
 
 import Zoom from "@mui/material/Zoom";
 import { Link } from "react-router-dom";
@@ -26,50 +27,60 @@ function RestaurantNav(props: RestaurantNavProps) {
   }, [restaurantId]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "10px",
-        padding: "16px",
-      }}
-    >
-      {restaurants.length > 0
-        ? restaurants.map(restaurant => (
-            <Box key={restaurant.id} sx={{ display: "flex", flexDirection: "column" }}>
-              <Tooltip key={restaurant.id} title={restaurant.name} placement="top" arrow TransitionComponent={Zoom}>
-                <ButtonBase
-                  onClick={event => handleClick(event, restaurant)}
-                  sx={{ borderRadius: "4px", overflow: "hidden" }}
-                >
-                  <Avatar variant="rounded">{restaurant.name.charAt(0)}</Avatar>
-                </ButtonBase>
-              </Tooltip>
-              {selected === restaurant.id ? (
-                <Chip
-                  aria-controls="menu-list-grow"
-                  sx={{
-                    transition: "all .2s ease-in-out",
-                    borderColor: theme.palette.primary.light,
-                    backgroundColor: theme.palette.primary.light,
-                    "& .MuiChip-label": {
-                      lineHeight: 0,
-                    },
-                    height: "10px",
-                    marginTop: "5px",
-                  }}
-                />
-              ) : (
-                ""
-              )}
-            </Box>
-          ))
-        : ""}
-
-      <Button to="/create-restaurant" component={Link}>
-        Add resto
-      </Button>
-    </Box>
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          padding: "16px",
+          justifyContent: "center",
+        }}
+      >
+        {restaurants.length > 0
+          ? restaurants.map(restaurant => (
+              <Box key={restaurant.id} sx={{ display: "flex", flexDirection: "column" }}>
+                <Tooltip key={restaurant.id} title={restaurant.name} placement="top" arrow TransitionComponent={Zoom}>
+                  <Button
+                    onClick={event => handleClick(event, restaurant)}
+                    variant="outlined"
+                    sx={{
+                      backgroundColor: "#fff",
+                      color: "grey.50",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {restaurant.name.charAt(0)}
+                  </Button>
+                </Tooltip>
+                {selected === restaurant.id ? (
+                  <Chip
+                    aria-controls="menu-list-grow"
+                    sx={{
+                      transition: "all .2s ease-in-out",
+                      backgroundColor: theme.palette.secondary.light,
+                      "& .MuiChip-label": {
+                        lineHeight: 0,
+                      },
+                      height: "10px",
+                      marginTop: "5px",
+                    }}
+                  />
+                ) : (
+                  ""
+                )}
+              </Box>
+            ))
+          : ""}
+      </Box>
+      <IconButton
+        sx={{ bgcolor: theme.palette.secondary.light, color: "#fff" }}
+        to="/restaurants/create"
+        component={Link}
+      >
+        <Add />
+      </IconButton>
+    </>
   );
 }
 

@@ -68,7 +68,7 @@ function MainLayout() {
           minHeight: "calc(100vh - 88px)",
           flexGrow: 1,
           marginTop: "88px",
-          bgcolor: "rgba(116, 155, 210, 0.4)",
+          bgcolor: "rgba(116, 155, 210, 0.2)",
           borderRadius: "5px",
           padding: "20px",
         }}

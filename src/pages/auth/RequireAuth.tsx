@@ -16,7 +16,7 @@ function RequireAuth() {
     });
 
     useEffect(() => {
-      if (!loading) {
+      if (data) {
         setRestaurants(data.getUser.restaurants);
       }
     }, [data, loading]);

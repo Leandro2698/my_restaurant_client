@@ -1,13 +1,12 @@
 /* eslint-disable max-len */
 import { Container, styled } from "@mui/material";
 import MainCard from "../../../components/Cards/MainCard";
-import FirstRestaurantForm from "./restaurant-forms/CreateRestaurantForm";
+import CreateRestaurantForm from "./restaurant-forms/CreateRestaurantForm";
 
 // ----------------------------------------------------------------------
 const RootStyle = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     display: "flex",
-    backgroundColor: "rgba(116, 155, 210, 0.2)",
     minHeight: "calc(100vh - 20px)",
     marginTop: "20px",
     marginLeft: "20px",
@@ -30,7 +29,7 @@ function CreateRestaurant() {
       <Container>
         <ContentStyle>
           <MainCard sx={{ color: "red" }} title="Create your restaurant">
-            <FirstRestaurantForm />
+            <CreateRestaurantForm />
           </MainCard>
         </ContentStyle>
       </Container>

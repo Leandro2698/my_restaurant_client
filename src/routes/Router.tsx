@@ -17,12 +17,12 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route element={<RequireAuth />}>
-          <Route path="/create-restaurant" element={<CreateRestaurant />} />
           <Route path="/" element={<MainLayout />}>
             <Route path="/" element={<Overview />} />
-            <Route path="/acount" element={<Account />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/restaurants" element={<Restaurants />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/products/list" element={<Product />} />
+            <Route path="/restaurants/List" element={<Restaurants />} />
+            <Route path="/restaurants/create" element={<CreateRestaurant />} />
           </Route>
         </Route>
 

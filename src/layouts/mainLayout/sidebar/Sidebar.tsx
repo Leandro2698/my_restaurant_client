@@ -1,7 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-cycle */
-/* eslint-disable react/forbid-prop-types */
 import { useContext } from "react";
-// material-ui
 import { useTheme } from "@mui/material/styles";
 import {
   Box,
@@ -10,23 +9,30 @@ import {
   Drawer,
   List,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../../components/Logo";
 import RestaurantNav from "./RestaurantNav";
 import { RestaurantContext } from "../../../context/RestaurantContext";
 import { SidebarProps } from "../types";
+import { SidebarData } from "./SidebarData";
+import SubMenu from "./SubMenu";
 
 function Sidebar(props: SidebarProps) {
   const { drawerWidth, drawerOpen, drawerToggle } = props;
   const { userRestaurants }: any = useContext(RestaurantContext);
+  const location = useLocation();
 
   const theme = useTheme();
+  function active(e: string) {
+    if (location.pathname === `${e}`) {
+      return true;
+    }
+    return false;
+  }
 
   const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
   return (
@@ -48,6 +54,7 @@ function Sidebar(props: SidebarProps) {
             [theme.breakpoints.up("md")]: {
               top: "88px",
             },
+            gap: "20px",
           },
         }}
         ModalProps={{ keepMounted: true }}
@@ -62,16 +69,14 @@ function Sidebar(props: SidebarProps) {
         </Box>
         <Box
           sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             paddingLeft: "16px",
             paddingRight: "16px",
           }}
         >
-          <Typography variant="h6" display="block" gutterBottom>
-            Restaurants
-          </Typography>
-
           <RestaurantNav restaurants={userRestaurants} />
-          <Divider />
         </Box>
         <Box
           sx={{
@@ -80,86 +85,43 @@ function Sidebar(props: SidebarProps) {
             paddingRight: "16px",
           }}
         >
+          <Divider sx={{ mt: 0.25, mb: 1.25 }} />
           <List
             subheader={
-              <Typography variant="h6" display="block" gutterBottom>
+              <Typography variant="h4" display="block" gutterBottom>
                 General
               </Typography>
             }
           >
-            {/* Item TODO update */}
-            <ListItemButton
-              sx={{
-                mb: 0.5,
-                backgroundColor: "transparent !important",
-                py: 1,
-              }}
-              component={Link}
-              to="/"
-            >
-              <ListItemIcon>todo</ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="h5" color="inherit">
-                    Overview
-                  </Typography>
-                }
-              />
-            </ListItemButton>
-            <ListItemButton
-              sx={{
-                mb: 0.5,
-                backgroundColor: "transparent !important",
-                py: 1,
-              }}
-              component={Link}
-              to="/acount"
-            >
-              <ListItemIcon>todo</ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="h5" color="inherit">
-                    Acount
-                  </Typography>
-                }
-              />
-            </ListItemButton>
-            <ListItemButton
-              sx={{
-                mb: 0.5,
-                backgroundColor: "transparent !important",
-                py: 1,
-              }}
-              component={Link}
-              to="/product"
-            >
-              <ListItemIcon>todo</ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="h5" color="inherit">
-                    Product
-                  </Typography>
-                }
-              />
-            </ListItemButton>
-            <ListItemButton
-              sx={{
-                mb: 0.5,
-                backgroundColor: "transparent !important",
-                py: 1,
-              }}
-              component={Link}
-              to="/restaurants"
-            >
-              <ListItemIcon>todo</ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="h5" color="inherit">
-                    restaurants
-                  </Typography>
-                }
-              />
-            </ListItemButton>
+            {SidebarData.map((e: any, i: any) =>
+              !e.subnav ? (
+                <ListItemButton
+                  sx={{
+                    mb: 0.5,
+                    backgroundColor: active(e.path) ? "rgba(116, 155, 210, 0.4)" : "",
+                    borderRadius: "5px",
+                    py: 1,
+                  }}
+                  key={i}
+                  component={Link}
+                  to={e.path}
+                >
+                  <ListItemText primary={<Typography variant="h5">{e.title}</Typography>} />
+                </ListItemButton>
+              ) : null
+            )}
+          </List>
+          <Divider sx={{ mt: 0.25, mb: 1.25 }} />
+          <List
+            subheader={
+              <Typography variant="h4" display="block" gutterBottom>
+                Management
+              </Typography>
+            }
+          >
+            {SidebarData.map((e, i) => (
+              <SubMenu key={i} items={e} />
+            ))}
           </List>
           <Divider sx={{ mt: 0.25, mb: 1.25 }} />
         </Box>
