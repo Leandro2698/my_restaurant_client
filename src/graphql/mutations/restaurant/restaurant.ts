@@ -7,6 +7,13 @@ export const CREATE_RESTAURANT = gql`
     }
   }
 `;
+export const UPDATE_RESTAURANT = gql`
+  mutation UpdateRestaurant($restaurantId: ID!, $createRestaurantInput: CreateRestaurant) {
+    updateRestaurant(restaurantId: $restaurantId, createRestaurantInput: $createRestaurantInput) {
+      id
+    }
+  }
+`;
 export const DELETE_RESTAURANT = gql`
   mutation DeleteRestaurant($restaurantId: ID!) {
     deleteRestaurant(restaurantId: $restaurantId) {

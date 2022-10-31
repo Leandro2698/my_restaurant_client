@@ -1,9 +1,11 @@
+import { Grid } from "@mui/material";
 import MiniCard from "../../../components/Cards/MiniCard";
-// import { RestaurantContext } from '../../../context/RestaurantContext';
 
 function Total() {
-  // const { restaurantActiveId } = useContext(RestaurantContext);
-  // console.log('restrestaurantActiveId', restaurantActiveId);
-  return <MiniCard sx={{ color: "red" }} />;
+  return (
+    <Grid item xs={12} lg={4} sm={4} xl={4}>
+      <MiniCard sx={{ color: "red" }} />
+    </Grid>
+  );
 }
 export default Total;

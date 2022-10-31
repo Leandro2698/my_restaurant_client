@@ -1,12 +1,30 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@apollo/client";
-import { List } from "@mui/material";
+import { List, Container, styled } from "@mui/material";
 import { useContext } from "react";
+import MainCard from "../../../components/Cards/MainCard";
 import { AuthContext } from "../../../context/authContext";
 import { GET_ALL_RESTAURANTS } from "../../../graphql/queries/user/restaurants/restaurant";
 import Restaurant from "./Restaurant";
 
+const RootStyle = styled("div")(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+    minHeight: "calc(100vh - 20px)",
+    marginTop: "20px",
+    marginLeft: "20px",
+    marginRight: "20px",
+    borderRadius: "10px",
+  },
+}));
+
+const ContentStyle = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  padding: theme.spacing(12, 0),
+}));
 export default function Restaurants() {
   const { user } = useContext<any>(AuthContext);
 
@@ -20,10 +38,18 @@ export default function Restaurants() {
 
   const restaurantsUser = data.getUser.restaurants;
   return (
-    <List>
-      {restaurantsUser.map((e: any) => (
-        <Restaurant key={e.id} restaurant={e} userId={user.id} />
-      ))}
-    </List>
+    <RootStyle>
+      <Container>
+        <ContentStyle>
+          <MainCard sx={{ color: "red" }} title="List Restaurants">
+            <List>
+              {restaurantsUser.map((e: any) => (
+                <Restaurant key={e.id} restaurant={e} userId={user.id} />
+              ))}
+            </List>
+          </MainCard>
+        </ContentStyle>
+      </Container>
+    </RootStyle>
   );
 }

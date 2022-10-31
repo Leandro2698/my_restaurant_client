@@ -1,6 +1,6 @@
 export const SidebarData = [
   {
-    title: "Overview",
+    title: "Dashboard",
     path: "/",
   },
   {
@@ -25,7 +25,7 @@ export const SidebarData = [
     subnav: [
       {
         title: "List restaurants",
-        path: "/restaurants/List",
+        path: "/restaurants/list",
       },
       {
         title: "Edit restaurant",

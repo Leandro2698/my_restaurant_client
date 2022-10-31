@@ -6,8 +6,28 @@ import { setContext } from "@apollo/client/link/context";
 import App from "./App";
 import Theme from "./theme/theme";
 
+export type Visualisations = Visualisation[];
+
 export const restaurantIdVar = makeVar(window.localStorage.getItem("restaurantId") || "");
-// const decodedToken = jwtDecode<MyToken>(localStorage.getItem("jwtToken") || "");
+export interface Visualisation {
+  id: number;
+  name: string;
+}
+const visualsInitialValue: Visualisations = [
+  {
+    id: 0,
+    name: "name 1",
+  },
+  {
+    id: 1,
+    name: "name 2",
+  },
+  {
+    id: 2,
+    name: "name 3",
+  },
+];
+export const visualVar = makeVar<Visualisations>(visualsInitialValue);
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -18,6 +38,11 @@ const cache = new InMemoryCache({
             return restaurantIdVar();
           },
         },
+        // tests: {
+        //   read() {
+        //     return visualVar();
+        //   },
+        // },
       },
     },
   },

@@ -15,7 +15,6 @@ export const GET_ALL_RESTAURANTS = gql`
         sales {
           id
         }
-        isRestaurantSelected @client
       }
     }
   }

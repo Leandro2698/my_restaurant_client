@@ -6,9 +6,10 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import RequireAuth from "../pages/auth/RequireAuth";
 import Account from "../pages/general/Account/Account";
-import Overview from "../pages/general/Overview/Overview";
+import Dashboard from "../pages/general/Dashboard/Dashboard";
 import Product from "../pages/management/Management";
 import CreateRestaurant from "../pages/management/restaurant/CreateRestaurant";
+import EditRestaurant from "../pages/management/restaurant/EditRestaurant";
 import Restaurants from "../pages/management/restaurant/LIstRestaurants";
 import Page404 from "../pages/Page404";
 
@@ -18,11 +19,12 @@ function Router() {
       <Routes>
         <Route element={<RequireAuth />}>
           <Route path="/" element={<MainLayout />}>
-            <Route path="/" element={<Overview />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/account" element={<Account />} />
             <Route path="/products/list" element={<Product />} />
             <Route path="/restaurants/List" element={<Restaurants />} />
             <Route path="/restaurants/create" element={<CreateRestaurant />} />
+            <Route path="/restaurants/edit" element={<EditRestaurant />} />
           </Route>
         </Route>
 
