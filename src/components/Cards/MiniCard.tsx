@@ -1,6 +1,6 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import { ArrowDownward, Money } from "@mui/icons-material";
-import { PropsMiniCard } from "./types";
+import { PropsMiniCard } from "./typesCards";
 
 function MiniCard(props: PropsMiniCard) {
   const { sx } = props;

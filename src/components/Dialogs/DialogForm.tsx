@@ -1,7 +1,9 @@
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import DialogButtons from "./DialogButtons";
+import { PropsDialog } from "./typesDialogs";
 
-export default function DialogForm(props: any) {
-  const { title, children, open, handleClose } = props;
+export default function DialogForm(props: PropsDialog) {
+  const { title, children, open, handleClose, actions } = props;
   return (
     <Dialog
       sx={{
@@ -14,6 +16,7 @@ export default function DialogForm(props: any) {
     >
       <DialogTitle>{title}</DialogTitle>
       <DialogContent sx={{ margin: "10px" }}>{children}</DialogContent>
+      <DialogButtons>{actions}</DialogButtons>
     </Dialog>
   );
 }

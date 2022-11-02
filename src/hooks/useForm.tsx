@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useForm = (callback: any, initialState = {}) => {
+const useForm = (callback: Function, initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
   const onChange = (event: any) => {

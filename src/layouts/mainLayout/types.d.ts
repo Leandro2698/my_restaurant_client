@@ -26,3 +26,4 @@ export type RestaurantNavProps = {
 export type SubMenuProps = {
   items: any;
 };
+export type SidebarData = Array<any>;

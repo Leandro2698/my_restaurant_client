@@ -19,7 +19,6 @@ import RestaurantNav from "./RestaurantNav";
 import { RestaurantContext } from "../../../context/RestaurantContext";
 import { SidebarProps } from "../types";
 import { SidebarData } from "./SidebarData";
-import SubMenu from "./SubMenu";
 
 function Sidebar(props: SidebarProps) {
   const { drawerWidth, drawerOpen, drawerToggle } = props;
@@ -94,7 +93,7 @@ function Sidebar(props: SidebarProps) {
             }
           >
             {SidebarData.map((e: any, i: any) =>
-              !e.subnav ? (
+              e.subtitle === "general" ? (
                 <ListItemButton
                   sx={{
                     mb: 0.5,
@@ -119,9 +118,23 @@ function Sidebar(props: SidebarProps) {
               </Typography>
             }
           >
-            {SidebarData.map((e, i) => (
-              <SubMenu key={i} items={e} />
-            ))}
+            {SidebarData.map((e, i) =>
+              e.subtitle === "management" ? (
+                <ListItemButton
+                  sx={{
+                    mb: 0.5,
+                    backgroundColor: active(e.path) ? "rgba(116, 155, 210, 0.4)" : "",
+                    borderRadius: "5px",
+                    py: 1,
+                  }}
+                  key={i}
+                  component={Link}
+                  to={e.path}
+                >
+                  <ListItemText primary={<Typography variant="h5">{e.title}</Typography>} />
+                </ListItemButton>
+              ) : null
+            )}
           </List>
           <Divider sx={{ mt: 0.25, mb: 1.25 }} />
         </Box>

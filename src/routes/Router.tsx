@@ -7,11 +7,10 @@ import Register from "../pages/auth/Register";
 import RequireAuth from "../pages/auth/RequireAuth";
 import Account from "../pages/general/Account/Account";
 import Dashboard from "../pages/general/Dashboard/Dashboard";
-import Product from "../pages/management/Management";
-import CreateRestaurant from "../pages/management/restaurant/CreateRestaurant";
-import EditRestaurant from "../pages/management/restaurant/EditRestaurant";
-import Restaurants from "../pages/management/restaurant/LIstRestaurants";
+import ListRestaurants from "../pages/management/restaurant/restaurants-list/ListRestaurants";
+import RestaurantView from "../pages/management/restaurant/restaurant-view/RestaurantView";
 import Page404 from "../pages/Page404";
+import ListProducts from "../pages/management/products/products-list/ListProducts";
 
 function Router() {
   return (
@@ -21,10 +20,9 @@ function Router() {
           <Route path="/" element={<MainLayout />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/account" element={<Account />} />
-            <Route path="/products/list" element={<Product />} />
-            <Route path="/restaurants/List" element={<Restaurants />} />
-            <Route path="/restaurants/create" element={<CreateRestaurant />} />
-            <Route path="/restaurants/edit" element={<EditRestaurant />} />
+            <Route path="/products/list" element={<ListProducts />} />
+            <Route path="/restaurants/list" element={<ListRestaurants />} />
+            <Route path="/restaurant/:id" element={<RestaurantView />} />
           </Route>
         </Route>
 

@@ -19,12 +19,12 @@ import { AuthContext } from "../../../context/authContext";
 
 function ProfileHeader() {
   const theme = useTheme();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const { logout, user } = useContext<any>(AuthContext);
   const anchorRef = useRef(null);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 

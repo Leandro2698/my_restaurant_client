@@ -11,9 +11,15 @@ export const GET_ALL_RESTAURANTS = gql`
         }
         turnoversRestaurant {
           id
+          createdAt
+          turnoverYear
         }
         sales {
           id
+          id
+          productId
+          createdAt
+          unitProductSold
         }
       }
     }
@@ -42,7 +48,7 @@ export const GET_ALL_PRODUCTS = gql`
 
 export const GET_ONE_RESTAURANT = gql`
   query GetRestaurant($restaurantId: ID!) {
-    data: getRestaurant(restaurantId: $restaurantId) {
+    restaurant: getRestaurant(restaurantId: $restaurantId) {
       id
       name
     }

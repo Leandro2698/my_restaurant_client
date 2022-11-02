@@ -7,7 +7,7 @@ import Sidebar from "./sidebar/Sidebar";
 import Header from "./header";
 
 const drawerWidth = 260;
-const Main = styled<any>("main", { shouldForwardProp: prop => prop !== "open" })(({ theme, open }) => ({
+const Main = styled("main", { shouldForwardProp: prop => prop !== "open" })<any>(({ theme, open }) => ({
   ...(!open && {
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
@@ -50,6 +50,12 @@ const Main = styled<any>("main", { shouldForwardProp: prop => prop !== "open" })
     },
   }),
 }));
+
+const ContentStyle = styled("div")(() => ({
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+}));
 function MainLayout() {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -75,7 +81,9 @@ function MainLayout() {
         theme={theme}
         open={open}
       >
-        <Outlet />
+        <ContentStyle>
+          <Outlet />
+        </ContentStyle>
       </Main>
     </Box>
   );
