@@ -8,6 +8,11 @@ export type PropsMainCard = {
   action?: React.ReactNode;
   content?: boolean;
 };
-export type PropsMiniCard = {
+export type PropsSubCard = {
+  title: string;
   sx?: SxProps;
+  sxContent?: SxProps;
+  children: JSX.Element;
+  action?: React.ReactNode;
+  content?: boolean;
 };

@@ -1,21 +1,19 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useQuery } from "@apollo/client";
+/* eslint-disable import/no-cycle */
+import { useQuery, useReactiveVar } from "@apollo/client";
 import { IconButton } from "@mui/material";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { format } from "date-fns";
 import { Add } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
-import { AuthContext } from "../../../../context/authContext";
-import { GET_ALL_RESTAURANTS } from "../../../../graphql/queries/user/restaurants/restaurant";
+import { GET_ALL_PRODUCTS } from "../../../../graphql/queries/user/products/product";
 import MainCard from "../../../../components/Cards/MainCard";
-// import RowRestaurants from "./RowRestaurants";
-// import AddRestaurant from "./AddRestaurant";
 import MainTable from "../../../../components/Tables/MainTable";
-// import { Restaurant } from "../types";
+import { restaurantIdVar } from "../../../../ApolloProvider";
+import RowProducts from "./RowProducts";
+import AddProduct from "./AddProduct";
 
 export default function ListProducts() {
-  const { user } = useContext<any>(AuthContext);
+  const restaurantId = useReactiveVar(restaurantIdVar);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const handleClickAdd = () => {
@@ -25,45 +23,42 @@ export default function ListProducts() {
   const handleCloseDialog = () => {
     setOpen(false);
   };
-
-  const { loading, error, data } = useQuery(GET_ALL_RESTAURANTS, {
-    variables: { userId: user.id },
+  const { loading, error, data } = useQuery(GET_ALL_PRODUCTS, {
+    variables: { restaurantId },
   });
 
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error main! {error.message}</p>;
 
-  const restaurantsUser = data.getUser.restaurants;
+  const listProducts = data.getProducts;
 
-  const restaurants: any = [];
+  const products: any = [];
 
   const thisYear = new Date();
 
-  for (let i = 0; i < restaurantsUser.length; i += 1) {
-    const turnoverThisYear = restaurantsUser[i].turnoversRestaurant.filter(
+  for (let i = 0; i < listProducts.length; i += 1) {
+    const turnoverProductThisYear = listProducts[i].turnoversProduct.filter(
       (turnover: any) => format(turnover?.createdAt, "yyyy") === format(thisYear, "yyyy")
     );
-
-    const salesThisYear = restaurantsUser[i].sales.filter(
-      (sale: any) => format(sale?.createdAt, "yyyy") === format(thisYear, "yyyy")
+    const soldProductThisYear = listProducts[i].sales.filter(
+      (turnover: any) => format(turnover?.createdAt, "yyyy") === format(thisYear, "yyyy")
     );
-
-    const salesThisYearByRestaurant = salesThisYear.map((e: any) => e.unitProductSold);
-
-    const sumOfSalesThisYear = salesThisYearByRestaurant.reduce((partialSum: any, a: any) => partialSum + a, 0);
-    restaurants.push({
-      id: restaurantsUser[i].id,
-      name: restaurantsUser[i].name,
-      turnover: turnoverThisYear.map((e: any) => e.turnoverYear)[0],
-      sales: sumOfSalesThisYear,
+    products.push({
+      id: listProducts[i].id,
+      name: listProducts[i].name,
+      createdAt: listProducts[i].createdAt,
+      unitSalePrice: listProducts[i].unitSalePrice,
+      status: listProducts[i].status,
+      category: listProducts[i].category,
+      sold: soldProductThisYear.map((e: any) => e.unitProductSold)[0],
+      turnover: turnoverProductThisYear.map((e: any) => e.turnoverYear)[0],
     });
   }
-
   return (
     <>
       <MainCard
-        title="List Restaurants"
+        title="List Products"
         action={
           <IconButton onClick={handleClickAdd} sx={{ bgcolor: theme.palette.secondary.light, color: "#fff" }}>
             <Add />
@@ -71,14 +66,13 @@ export default function ListProducts() {
         }
         content={false}
       >
-        <MainTable tableCells={["Name", "Turnover", "Sales", "Action"]}>
-          {/* {restaurants.map((restaurant: Restaurant) => (
-            <RowRestaurants key={restaurant.id} restaurant={restaurant} />
-          ))} */}
-          <p>alkl</p>
+        <MainTable tableCells={["Name", "Price", "Sales", "Turnover", "Status", "Category", "Action"]}>
+          {products.map((product: any) => (
+            <RowProducts key={product.id} product={product} restaurantId={restaurantId} />
+          ))}
         </MainTable>
       </MainCard>
-      {/* <AddRestaurant handleClose={handleCloseDialog} open={open} userId={user.id} /> */}
+      <AddProduct handleClose={handleCloseDialog} open={open} restaurantId={restaurantId} />
     </>
   );
 }

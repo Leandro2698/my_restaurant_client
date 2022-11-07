@@ -92,7 +92,7 @@ function Sidebar(props: SidebarProps) {
               </Typography>
             }
           >
-            {SidebarData.map((e: any, i: any) =>
+            {SidebarData.map((e: any, i: number) =>
               e.subtitle === "general" ? (
                 <ListItemButton
                   sx={{

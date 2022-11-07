@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-cycle */
 import { useQuery } from "@apollo/client";
 import { IconButton } from "@mui/material";
 import { useContext, useState } from "react";
@@ -15,7 +14,7 @@ import MainTable from "../../../../components/Tables/MainTable";
 import { Restaurant } from "../types";
 
 export default function ListRestaurants() {
-  const { user } = useContext<any>(AuthContext);
+  const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const handleClickAdd = () => {
@@ -27,13 +26,16 @@ export default function ListRestaurants() {
   };
 
   const { loading, error, data } = useQuery(GET_ALL_RESTAURANTS, {
-    variables: { userId: user.id },
+    variables: { userId: user?.id },
   });
 
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error main! {error.message}</p>;
 
+  // ! Question !
+  // ? Best way in back or in the front
+  // ? Maybe do the calcul in the back ?
   const restaurantsUser = data.getUser.restaurants;
 
   const restaurants: any = [];
@@ -77,7 +79,7 @@ export default function ListRestaurants() {
           ))}
         </MainTable>
       </MainCard>
-      <AddRestaurant handleClose={handleCloseDialog} open={open} userId={user.id} />
+      <AddRestaurant handleClose={handleCloseDialog} open={open} userId={user?.id} />
     </>
   );
 }

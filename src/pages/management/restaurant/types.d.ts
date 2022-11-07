@@ -5,13 +5,13 @@ export type Restaurant = {
   sales: string;
 };
 export type ActionsRestaurantProps = {
-  restaurantId: string;
-  userId: string;
+  restaurant: Restaurant;
+  userId?: string;
 };
 export type AddRestaurantProps = {
   open: boolean;
   handleClose: () => void;
-  userId: string;
+  userId?: string;
 };
 export type CollapseEditRestaurantProps = {
   restaurant: Restaurant;

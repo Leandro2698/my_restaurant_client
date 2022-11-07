@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from "@apollo/client";
 import { useContext, useEffect, useState } from "react";
@@ -8,7 +9,7 @@ import { GET_ALL_RESTAURANTS } from "../../graphql/queries/user/restaurants/rest
 
 function RequireAuth() {
   const location = useLocation();
-  const { user } = useContext<any>(AuthContext); // todo
+  const { user } = useContext(AuthContext); // todo
   const [restaurants, setRestaurants] = useState([]);
   if (user) {
     const { loading, data } = useQuery(GET_ALL_RESTAURANTS, {

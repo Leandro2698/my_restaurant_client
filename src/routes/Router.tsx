@@ -11,6 +11,7 @@ import ListRestaurants from "../pages/management/restaurant/restaurants-list/Lis
 import RestaurantView from "../pages/management/restaurant/restaurant-view/RestaurantView";
 import Page404 from "../pages/Page404";
 import ListProducts from "../pages/management/products/products-list/ListProducts";
+import ProductView from "../pages/management/products/product-view/ProductView";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
             <Route path="/products/list" element={<ListProducts />} />
             <Route path="/restaurants/list" element={<ListRestaurants />} />
             <Route path="/restaurant/:id" element={<RestaurantView />} />
+            <Route path="/product/:id" element={<ProductView />} />
           </Route>
         </Route>
 

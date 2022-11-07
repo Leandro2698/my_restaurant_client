@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { useState, useRef, useContext } from "react";
 import { Logout, Settings } from "@mui/icons-material";
 import {
@@ -21,7 +22,7 @@ function ProfileHeader() {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const { logout, user } = useContext<any>(AuthContext);
+  const { logout, user } = useContext(AuthContext);
   const anchorRef = useRef(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

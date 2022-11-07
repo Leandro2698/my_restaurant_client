@@ -1,9 +1,11 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useReducer } from "react";
 import jwtDecode from "jwt-decode";
 import { AuthProps, User } from "../layouts/mainLayout/types";
-import { InitialState, MyToken } from "./types";
+import { AuthContextType, InitialState, MyToken, ActionReducerType } from "./types";
+import { restaurantIdVar } from "../ApolloProvider";
 
 const initialState: InitialState = {
   user: null,
@@ -18,13 +20,13 @@ if (localStorage.getItem("jwtToken")) {
   }
 }
 
-const AuthContext = createContext({
+const AuthContext = createContext<AuthContextType>({
   user: null,
   login: (_userData: User) => {},
   logout: () => {},
 });
 
-function authReducer(state: any, action: any) {
+function authReducer(state: any, action: ActionReducerType) {
   switch (action.type) {
     case "LOGIN":
       return {
@@ -54,8 +56,9 @@ function AuthProvider(props: AuthProps) {
   function logout() {
     dispach({ type: "LOGOUT" });
     localStorage.removeItem("jwtToken");
+    localStorage.removeItem("restaurantId");
+    restaurantIdVar("");
   }
-  localStorage.removeItem("restaurantId");
 
   return <AuthContext.Provider value={{ user: state.user, login, logout }} {...props} />;
 }

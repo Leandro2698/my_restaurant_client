@@ -4,12 +4,14 @@ export type MyToken = {
   // whatever else is in the JWT.
 };
 export type User = {
+  id: string;
   firstname: string;
   lastname: string;
   email: string;
   password: string;
   create_at: string;
   restaurants: Array<object>;
+  token: string;
 };
 export type InitialState = {
   user: object | null;
@@ -18,6 +20,13 @@ export type AuthContextType = {
   user: User | null;
   login: (user) => void;
   logout: () => void;
+};
+export type ActionReducerType = {
+  type: string;
+  payload?: object;
+};
+export type StateReducerType = {
+  user: object;
 };
 
 export type RestaurantContextProps = {

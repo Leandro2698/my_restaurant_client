@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { SelectChangeEvent } from "@mui/material";
+import { ChangeEvent, useState } from "react";
 
 const useForm = (callback: Function, initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
-  const onChange = (event: any) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
+  const onChange = (event: (ChangeEvent<HTMLInputElement> & SelectChangeEvent<HTMLInputElement>) | any) => {
+    setValues({ ...values, [event.target.name]: event.target.valueAsNumber || event.target.value });
   };
 
-  const onSubmit = (event: any) => {
+  const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     callback();
   };

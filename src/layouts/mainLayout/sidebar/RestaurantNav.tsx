@@ -15,11 +15,17 @@ import { AuthContext } from "../../../context/authContext";
 function RestaurantNav(props: RestaurantNavProps) {
   const { restaurants } = props;
   const restaurantId = useReactiveVar(restaurantIdVar);
-  const { user } = useContext<any>(AuthContext);
+  const { user } = useContext(AuthContext);
   const [selected, setSelected] = useState(restaurantId);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
 
+  if (restaurants.length > 0 && restaurantId === "") {
+    restaurantIdVar(restaurants[0].id);
+    setSelected(restaurants[0].id);
+  } else {
+    // Todo msg for add restaurant first
+  }
   const handleClickAdd = () => {
     setOpen(true);
   };
@@ -87,7 +93,7 @@ function RestaurantNav(props: RestaurantNavProps) {
       <IconButton sx={{ bgcolor: theme.palette.secondary.light, color: "#fff" }} onClick={handleClickAdd}>
         <Add />
       </IconButton>
-      <AddRestaurantNav handleClose={handleCloseDialog} open={open} userId={user.id} />
+      <AddRestaurantNav handleClose={handleCloseDialog} open={open} userId={user?.id} />
     </>
   );
 }
