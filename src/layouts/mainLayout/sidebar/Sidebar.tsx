@@ -1,5 +1,4 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable import/no-cycle */
 import { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import {

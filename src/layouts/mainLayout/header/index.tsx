@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from "prop-types";
 import { Menu } from "@mui/icons-material";

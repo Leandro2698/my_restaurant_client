@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { useState, useRef, useContext } from "react";
 import { Logout, Settings } from "@mui/icons-material";
 import {

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
@@ -8,9 +7,9 @@ import { useTheme } from "@mui/material/styles";
 import { GET_ALL_PRODUCTS } from "../../../../graphql/queries/user/products/product";
 import MainCard from "../../../../components/Cards/MainCard";
 import MainTable from "../../../../components/Tables/MainTable";
-import { restaurantIdVar } from "../../../../ApolloProvider";
 import RowProducts from "./RowProducts";
 import AddProduct from "./AddProduct";
+import { restaurantIdVar } from "../../../../reactiveVars";
 
 export default function ListProducts() {
   const restaurantId = useReactiveVar(restaurantIdVar);

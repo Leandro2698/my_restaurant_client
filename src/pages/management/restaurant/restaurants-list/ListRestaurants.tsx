@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { useQuery } from "@apollo/client";
 import { IconButton } from "@mui/material";
 import { useContext, useState } from "react";

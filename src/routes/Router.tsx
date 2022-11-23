@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/mainLayout/MainLayout";
 import MinimalLayout from "../layouts/minimalLayout/MinimalLayout";

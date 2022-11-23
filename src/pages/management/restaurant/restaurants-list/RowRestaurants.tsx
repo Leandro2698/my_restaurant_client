@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { TableRow, TableCell, Box, Avatar, ListItemText, Link } from "@mui/material";
 import { useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";

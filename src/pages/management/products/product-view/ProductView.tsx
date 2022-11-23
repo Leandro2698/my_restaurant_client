@@ -1,10 +1,9 @@
-/* eslint-disable import/no-cycle */
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { restaurantIdVar } from "../../../../ApolloProvider";
 import SubCard from "../../../../components/Cards/SubCard";
 import { GET_ONE_PRODUCT } from "../../../../graphql/queries/user/products/product";
+import { restaurantIdVar } from "../../../../reactiveVars";
 
 export default function ProductView() {
   const restaurantId = useReactiveVar(restaurantIdVar);

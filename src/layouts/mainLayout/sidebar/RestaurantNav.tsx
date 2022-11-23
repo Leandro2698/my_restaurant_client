@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { useContext, useEffect, useState } from "react";
 import { Box, Button, Chip, IconButton, Tooltip } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -6,11 +5,11 @@ import { Add } from "@mui/icons-material";
 
 import Zoom from "@mui/material/Zoom";
 import { useReactiveVar } from "@apollo/client";
-import { restaurantIdVar } from "../../../ApolloProvider";
 import { RestaurantNavProps } from "../types";
 import { Restaurant } from "../../../context/types";
 import AddRestaurantNav from "./AddRestaurantNav";
 import { AuthContext } from "../../../context/authContext";
+import { restaurantIdVar } from "../../../reactiveVars";
 
 function RestaurantNav(props: RestaurantNavProps) {
   const { restaurants } = props;

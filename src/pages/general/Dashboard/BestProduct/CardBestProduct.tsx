@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { useQuery } from "@apollo/client";
 import { ButtonBase, Grid, Link, Typography } from "@mui/material";
 import { format } from "date-fns";

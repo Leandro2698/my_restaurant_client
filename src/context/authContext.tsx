@@ -1,11 +1,10 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useReducer } from "react";
 import jwtDecode from "jwt-decode";
 import { AuthProps, User } from "../layouts/mainLayout/types";
 import { AuthContextType, InitialState, MyToken, ActionReducerType } from "./types";
-import { restaurantIdVar } from "../ApolloProvider";
+import { restaurantIdVar } from "../reactiveVars";
+// import { restaurantIdVar } from "../ApolloProvider";
 
 const initialState: InitialState = {
   user: null,

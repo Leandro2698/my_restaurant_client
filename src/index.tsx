@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import ApolloProvider from "./ApolloProvider";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
-root.render(ApolloProvider);
+root.render(<App />);

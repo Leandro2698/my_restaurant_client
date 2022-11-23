@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from "@apollo/client";
 import { useContext, useEffect, useState } from "react";

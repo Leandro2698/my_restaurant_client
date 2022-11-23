@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { Delete, Edit, PointOfSale, Visibility } from "@mui/icons-material";
 import { IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
