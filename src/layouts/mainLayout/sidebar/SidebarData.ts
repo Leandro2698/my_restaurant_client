@@ -1,18 +1,14 @@
-export const SidebarData = [
+import { SidebarData as SidebarDataType } from "../types";
+
+export const SidebarData: SidebarDataType = [
   {
     title: "Dashboard",
     subtitle: "general",
     path: "/",
   },
   {
-    title: "Account",
-    subtitle: "general",
-    path: "/account",
-  },
-  {
     title: "Products",
     subtitle: "management",
-
     path: "/products/list",
   },
   {

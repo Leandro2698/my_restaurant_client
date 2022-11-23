@@ -29,7 +29,7 @@ export default function ListProducts() {
 
   if (loading) return <p>Loading...</p>;
 
-  if (error) return <p>Error main! {error.message}</p>;
+  if (error) return <p>Error list product! {error.message}</p>;
 
   const listProducts = data.getProducts;
 
@@ -38,12 +38,10 @@ export default function ListProducts() {
   const thisYear = new Date();
 
   for (let i = 0; i < listProducts.length; i += 1) {
-    const turnoverProductThisYear = listProducts[i].turnoversProduct.filter(
-      (turnover: any) => format(turnover?.createdAt, "yyyy") === format(thisYear, "yyyy")
+    const turnoverProductThisYear = listProducts[i].turnoversProductYear.filter(
+      (turnover: any) => turnover?.createdAt === format(thisYear, "yyyy")
     );
-    const soldProductThisYear = listProducts[i].sales.filter(
-      (turnover: any) => format(turnover?.createdAt, "yyyy") === format(thisYear, "yyyy")
-    );
+
     products.push({
       id: listProducts[i].id,
       name: listProducts[i].name,
@@ -51,8 +49,8 @@ export default function ListProducts() {
       unitSalePrice: listProducts[i].unitSalePrice,
       status: listProducts[i].status,
       category: listProducts[i].category,
-      sold: soldProductThisYear.map((e: any) => e.unitProductSold)[0],
-      turnover: turnoverProductThisYear.map((e: any) => e.turnoverYear)[0],
+      totalSales: turnoverProductThisYear[0]?.totalSales,
+      turnover: turnoverProductThisYear[0]?.turnoverYear,
     });
   }
   return (

@@ -37,7 +37,7 @@ export default function RowRestaurants(props: RowRestaurantsProps) {
         <ListItemText primary={`$${restaurant.turnover ? restaurant.turnover : "0"}`} secondary="This year" />
       </TableCell>
       <TableCell>
-        <ListItemText primary={restaurant.sales} secondary="This year" />
+        <ListItemText primary={`${restaurant.sales ? restaurant.sales : "0"}`} secondary="This year" />
       </TableCell>
       <TableCell align="right">
         <ActionsRestaurant restaurant={restaurant} userId={user.id} />

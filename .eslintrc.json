@@ -19,7 +19,6 @@
       "@typescript-eslint/no-unused-vars": ["warn"],
       "import/prefer-default-export": "off",
       "react-hooks/exhaustive-deps": ["error"],
-      "import/no-cycle": 0,
       "react/jsx-no-bind": [
         "warn",
         {

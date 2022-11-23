@@ -19,7 +19,6 @@ function RestaurantNav(props: RestaurantNavProps) {
   const [selected, setSelected] = useState(restaurantId);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
-
   if (restaurants.length > 0 && restaurantId === "") {
     restaurantIdVar(restaurants[0].id);
     setSelected(restaurants[0].id);

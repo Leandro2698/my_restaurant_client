@@ -11,7 +11,7 @@ export default function EditProduct(props: any) {
 
   const { values, onChange, onSubmit } = useForm(editProductCallback, {
     name: product.name,
-    unitSalePrice: product.unitSalePrice,
+    // unitSalePrice: product.unitSalePrice,
     status: product.status,
     category: product.category,
   });
@@ -87,13 +87,13 @@ export default function EditProduct(props: any) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={2} sm={4} md={6}>
+        {/* <Grid item xs={2} sm={4} md={6}>
           <TextField
             name="unitSalePrice"
             label="price"
             type="number"
             defaultValue={product.unitSalePrice}
-            fullWidth
+            fullWidth 
             InputProps={{
               inputProps: { min: 1 },
               startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -101,7 +101,7 @@ export default function EditProduct(props: any) {
             onChange={onChange}
             // Todo : errors
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </DialogForm>
   );

@@ -8,6 +8,7 @@ import useForm from "../../../../hooks/useForm";
 
 export default function EditRestaurant(props: any) {
   const { restaurant, userId, openEditDialog, closeEditDialog } = props;
+  console.log(`useruserId`, userId);
   const { values, onChange, onSubmit } = useForm(editRestaurantCallback, {
     name: restaurant.name,
   });

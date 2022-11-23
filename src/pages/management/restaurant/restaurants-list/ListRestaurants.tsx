@@ -31,11 +31,8 @@ export default function ListRestaurants() {
 
   if (loading) return <p>Loading...</p>;
 
-  if (error) return <p>Error main! {error.message}</p>;
+  if (error) return <p>Error list restaurants! {error.message}</p>;
 
-  // ! Question !
-  // ? Best way in back or in the front
-  // ? Maybe do the calcul in the back ?
   const restaurantsUser = data.getUser.restaurants;
 
   const restaurants: any = [];
@@ -43,22 +40,15 @@ export default function ListRestaurants() {
   const thisYear = new Date();
 
   for (let i = 0; i < restaurantsUser.length; i += 1) {
-    const turnoverThisYear = restaurantsUser[i].turnoversRestaurant.filter(
-      (turnover: any) => format(turnover?.createdAt, "yyyy") === format(thisYear, "yyyy")
+    const turnoverThisYear = restaurantsUser[i].turnoversRestaurantYear.filter(
+      (turnover: any) => turnover?.createdAt === format(thisYear, "yyyy")
     );
 
-    const salesThisYear = restaurantsUser[i].sales.filter(
-      (sale: any) => format(sale?.createdAt, "yyyy") === format(thisYear, "yyyy")
-    );
-
-    const salesThisYearByRestaurant = salesThisYear.map((e: any) => e.unitProductSold);
-
-    const sumOfSalesThisYear = salesThisYearByRestaurant.reduce((partialSum: any, a: any) => partialSum + a, 0);
     restaurants.push({
       id: restaurantsUser[i].id,
       name: restaurantsUser[i].name,
-      turnover: turnoverThisYear.map((e: any) => e.turnoverYear)[0],
-      sales: sumOfSalesThisYear,
+      turnover: turnoverThisYear[0]?.turnoverYear,
+      sales: turnoverThisYear[0]?.totalSales,
     });
   }
 

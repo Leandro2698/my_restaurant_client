@@ -1,15 +1,18 @@
+/* eslint-disable import/no-cycle */
 import { Delete, Edit, PointOfSale, Visibility } from "@mui/icons-material";
 import { IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { DELETE_PRODUCT } from "../../../../../graphql/mutations/product/product";
 import { GET_ALL_PRODUCTS } from "../../../../../graphql/queries/user/products/product";
 import EditProduct from "./EditProduct";
 import AddSales from "./AddSales";
+import { AuthContext } from "../../../../../context/authContext";
 
 export default function ActionsProduct(props: any) {
   const { restaurantId, product } = props;
+  const { user } = useContext<any>(AuthContext);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [openAddSalesDialog, setOpenAddSalesDialog] = useState(false);
 
@@ -69,6 +72,7 @@ export default function ActionsProduct(props: any) {
       <AddSales
         restaurantId={restaurantId}
         product={product}
+        userId={user.id}
         openDialog={openAddSalesDialog}
         closeDialogSales={closeSalesDialog}
       />

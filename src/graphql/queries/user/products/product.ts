@@ -5,23 +5,26 @@ export const GET_ALL_PRODUCTS = gql`
     getProducts(restaurantId: $restaurantId) {
       id
       name
-      createdAt
       unitSalePrice
       stock
+      turnoversProductMonth {
+        id
+        income
+        day
+        month
+        year
+        sales
+      }
+      turnoversProductYear {
+        id
+        createdAt
+        turnoverYear
+        totalSales
+      }
       category
       status
       delivery
       omSite
-      sales {
-        id
-        createdAt
-        unitProductSold
-      }
-      turnoversProduct {
-        id
-        createdAt
-        turnoverYear
-      }
     }
   }
 `;
@@ -30,23 +33,26 @@ export const GET_ONE_PRODUCT = gql`
     getProduct(restaurantId: $restaurantId, productId: $productId) {
       id
       name
-      category
-      createdAt
-      status
-      turnoversProduct {
+      unitSalePrice
+      stock
+      turnoversProductMonth {
+        id
+        income
+        day
+        month
+        year
+        sales
+      }
+      turnoversProductYear {
         id
         createdAt
         turnoverYear
+        totalSales
       }
-      unitSalePrice
-      stock
+      category
+      status
       delivery
       omSite
-      sales {
-        id
-        createdAt
-        unitProductSold
-      }
     }
   }
 `;

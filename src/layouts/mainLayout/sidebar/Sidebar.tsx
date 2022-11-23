@@ -17,7 +17,7 @@ import { Link, useLocation } from "react-router-dom";
 import Logo from "../../../components/Logo";
 import RestaurantNav from "./RestaurantNav";
 import { RestaurantContext } from "../../../context/RestaurantContext";
-import { SidebarProps } from "../types";
+import { DatasNav, SidebarProps } from "../types";
 import { SidebarData } from "./SidebarData";
 
 function Sidebar(props: SidebarProps) {
@@ -92,7 +92,7 @@ function Sidebar(props: SidebarProps) {
               </Typography>
             }
           >
-            {SidebarData.map((e: any, i: number) =>
+            {SidebarData.map((e: DatasNav, i: number) =>
               e.subtitle === "general" ? (
                 <ListItemButton
                   sx={{
@@ -107,7 +107,9 @@ function Sidebar(props: SidebarProps) {
                 >
                   <ListItemText primary={<Typography variant="h5">{e.title}</Typography>} />
                 </ListItemButton>
-              ) : null
+              ) : (
+                ""
+              )
             )}
           </List>
           <Divider sx={{ mt: 0.25, mb: 1.25 }} />

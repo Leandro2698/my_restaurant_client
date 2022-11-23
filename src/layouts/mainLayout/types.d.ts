@@ -23,7 +23,9 @@ export type Restaurants = Array<Restaurant>;
 export type RestaurantNavProps = {
   restaurants: Restaurants;
 };
-export type SubMenuProps = {
-  items: any;
+export type DatasNav = {
+  title: string;
+  subtitle: string;
+  path: string;
 };
-export type SidebarData = Array<any>;
+export type SidebarData = Array<DatasNav>;

@@ -10,6 +10,7 @@ import { restaurantIdVar } from "../ApolloProvider";
 const initialState: InitialState = {
   user: null,
 };
+
 if (localStorage.getItem("jwtToken")) {
   const decodedToken = jwtDecode<MyToken>(localStorage.getItem("jwtToken") || "");
 

@@ -43,11 +43,11 @@ function RegisterForm() {
       navigate("/");
     },
     onError(err) {
+      console.log(`err`, err);
       setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: { registerInput: values },
   });
-
   function registerUserCallback() {
     registerUser();
   }

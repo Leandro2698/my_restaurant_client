@@ -17,7 +17,7 @@ function SubCard(props: PropsSubCard) {
       }}
       elevation={1}
     >
-      <CardHeader sx={{ p: "30px" }} title={title} action={action} />
+      {title && <CardHeader sx={{ p: "20px" }} title={title} action={action} />}
       {title && <Divider />}
       {content && <CardContent>{children}</CardContent>}
       {!content && children}

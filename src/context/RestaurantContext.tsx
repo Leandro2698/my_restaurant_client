@@ -7,7 +7,6 @@ const RestaurantContext = createContext({});
 
 function RestaurantProvider(props: RestaurantContextProps) {
   const { userRestaurants: restaurants } = props;
-
   return (
     <RestaurantContext.Provider
       value={{

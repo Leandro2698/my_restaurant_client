@@ -3,10 +3,12 @@ import { useMutation } from "@apollo/client";
 import { Button, InputAdornment, TextField } from "@mui/material";
 import DialogForm from "../../../../../components/Dialogs/DialogForm";
 import { SOLD_PRODUCT } from "../../../../../graphql/mutations/product/product";
+import { GET_ALL_PRODUCTS } from "../../../../../graphql/queries/user/products/product";
+import { GET_ALL_RESTAURANTS } from "../../../../../graphql/queries/user/restaurants/restaurant";
 import useForm from "../../../../../hooks/useForm";
 
 export default function AddSales(props: any) {
-  const { openDialog, closeDialogSales, restaurantId, product } = props;
+  const { openDialog, closeDialogSales, restaurantId, product, userId } = props;
 
   const { values, onChange, onSubmit } = useForm(soldProductCallback, {
     unitProductSold: "",
@@ -17,6 +19,12 @@ export default function AddSales(props: any) {
       productId: product.id,
       soldProductInput: values,
     },
+    refetchQueries: [
+      {
+        query: GET_ALL_RESTAURANTS,
+        variables: { userId },
+      },
+    ],
   });
   function soldProductCallback() {
     soldProduct();

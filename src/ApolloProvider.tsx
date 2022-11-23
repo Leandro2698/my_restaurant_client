@@ -21,7 +21,7 @@ const cache = new InMemoryCache({
     },
   },
 });
-const httpLink = new HttpLink({ uri: "http://localhost:4004" });
+const httpLink = new HttpLink({ uri: "http://localhost:4009" });
 
 const authLink = setContext(() => {
   const token = localStorage.getItem("jwtToken");

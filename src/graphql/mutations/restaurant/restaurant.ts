@@ -8,9 +8,10 @@ export const CREATE_RESTAURANT = gql`
   }
 `;
 export const UPDATE_RESTAURANT = gql`
-  mutation UpdateRestaurant($restaurantId: ID!, $createRestaurantInput: CreateRestaurant) {
+  mutation UpdateRestaurant($restaurantId: ID!, $createRestaurantInput: CreateRestaurant!) {
     updateRestaurant(restaurantId: $restaurantId, createRestaurantInput: $createRestaurantInput) {
       id
+      name
     }
   }
 `;

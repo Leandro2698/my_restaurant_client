@@ -9,7 +9,6 @@ import { AddRestaurantProps } from "../../../pages/management/restaurant/types";
 
 export default function AddRestaurantNav(props: AddRestaurantProps) {
   const { open, handleClose, userId } = props;
-
   const { values, onChange, onSubmit } = useForm(createRestaurantCallback, {
     name: "",
   });
