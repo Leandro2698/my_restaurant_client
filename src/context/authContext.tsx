@@ -4,7 +4,6 @@ import jwtDecode from "jwt-decode";
 import { AuthProps, User } from "../layouts/mainLayout/types";
 import { AuthContextType, InitialState, MyToken, ActionReducerType } from "./types";
 import { restaurantIdVar } from "../reactiveVars";
-// import { restaurantIdVar } from "../ApolloProvider";
 
 const initialState: InitialState = {
   user: null,

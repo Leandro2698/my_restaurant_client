@@ -5,7 +5,6 @@ import { Link as RouterLink, Navigate, useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { Button, Typography, Container, Box } from "@mui/material";
 import { AuthContext } from "../context/authContext";
-
 // ----------------------------------------------------------------------
 const ContentStyle = styled("div")(({ theme }) => ({
   maxWidth: 480,
