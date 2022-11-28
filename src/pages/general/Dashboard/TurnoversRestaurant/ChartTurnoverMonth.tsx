@@ -53,5 +53,5 @@ export default function ChartTurnoverMonth(props: any) {
     },
   ];
 
-  return <Chart type="line" height={150} options={options} series={series} />;
+  return <Chart type="line" height={190} options={options} series={series} />;
 }

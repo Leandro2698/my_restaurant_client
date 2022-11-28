@@ -15,7 +15,7 @@ export default function EditRestaurant(props: any) {
 
   const [editRestaurant] = useMutation(UPDATE_RESTAURANT, {
     variables: {
-      restaurantId: restaurant.id,
+      restaurantId: restaurant._id,
       createRestaurantInput: values,
     },
     refetchQueries: [

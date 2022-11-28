@@ -8,7 +8,7 @@ import { GET_ALL_PRODUCTS } from "../../../../graphql/queries/user/products/prod
 export default function CardBestProduct(props: any) {
   const { restaurant } = props;
   const { loading, error, data } = useQuery(GET_ALL_PRODUCTS, {
-    variables: { restaurantId: restaurant.id },
+    variables: { restaurantId: restaurant._id },
   });
 
   if (loading) return <p>Loading...</p>;
@@ -68,13 +68,13 @@ export default function CardBestProduct(props: any) {
               </Grid>
             </Grid>
           </Grid>
-          <Link
+          {/* <Link
             variant="subtitle2"
             // component={RouterLink}
             href="/register"
           >
             Register
-          </Link>
+          </Link> */}
         </>
       ))}
     </MainCard>

@@ -35,7 +35,7 @@ export type RestaurantContextProps = {
 };
 
 export type Restaurant = {
-  id: string;
+  _id: string;
   name: string;
   admin: User;
   products: Array<T>; // Update

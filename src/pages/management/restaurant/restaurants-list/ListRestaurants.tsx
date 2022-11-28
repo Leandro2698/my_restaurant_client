@@ -64,7 +64,7 @@ export default function ListRestaurants() {
       >
         <MainTable tableCells={["Name", "Turnover", "Sales", "Action"]}>
           {restaurants.map((restaurant: Restaurant) => (
-            <RowRestaurants key={restaurant.id} restaurant={restaurant} />
+            <RowRestaurants key={restaurant._id} restaurant={restaurant} />
           ))}
         </MainTable>
       </MainCard>

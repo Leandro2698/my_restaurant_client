@@ -1,7 +1,22 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
-export default function ChartTurnoversProducts() {
+export default function ChartTurnoversProducts(props: any) {
+  const { turnoversByProduct } = props;
+  console.log(`turturnoversByProduct`, turnoversByProduct);
+  const turnoversProduct = [];
+  for (let i = 0; i < turnoversByProduct.length; i += 1) {
+    const { turnovers } = turnoversByProduct[i];
+    for (let u = 0; u < turnovers.length; u += 1) {
+      console.log(`foo`, turnoversByProduct[i].name);
+      console.log(`foo`, turnovers[u].income);
+      // turnoversProduct.push({
+      //   name: turnoversByProduct[i].name,
+      //   month: turnoverThisMonth[u].month,
+      //   income: turnoverThisMonth[u].income,
+      // });
+    }
+  }
   const options: ApexOptions = {
     chart: {
       stacked: true,
@@ -75,20 +90,16 @@ export default function ChartTurnoversProducts() {
 
   const series = [
     {
-      name: "Investment",
+      name: "product1",
       data: [35, 125, 35, 35, 35, 80, 35, 20, 35, 45, 15, 75],
     },
     {
-      name: "Loss",
+      name: "product2",
       data: [35, 15, 15, 35, 65, 40, 80, 25, 15, 85, 25, 75],
     },
     {
-      name: "Profit",
+      name: "product3",
       data: [35, 145, 35, 35, 20, 105, 100, 10, 65, 45, 30, 10],
-    },
-    {
-      name: "Maintenance",
-      data: [0, 0, 75, 0, 0, 115, 0, 0, 0, 0, 150, 0],
     },
   ];
 

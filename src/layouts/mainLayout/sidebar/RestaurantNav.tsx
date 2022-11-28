@@ -19,8 +19,8 @@ function RestaurantNav(props: RestaurantNavProps) {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   if (restaurants.length > 0 && restaurantId === "") {
-    restaurantIdVar(restaurants[0].id);
-    setSelected(restaurants[0].id);
+    restaurantIdVar(restaurants[0]._id);
+    setSelected(restaurants[0]._id);
   } else {
     // Todo msg for add restaurant first
   }
@@ -33,8 +33,8 @@ function RestaurantNav(props: RestaurantNavProps) {
   };
 
   const handleClick = (_event: React.MouseEvent<HTMLElement>, restaurant: Restaurant) => {
-    setSelected(restaurant.id);
-    restaurantIdVar(restaurant.id);
+    setSelected(restaurant._id);
+    restaurantIdVar(restaurant._id);
   };
 
   useEffect(() => {
@@ -54,8 +54,8 @@ function RestaurantNav(props: RestaurantNavProps) {
       >
         {restaurants.length > 0
           ? restaurants.map(restaurant => (
-              <Box key={restaurant.id} sx={{ display: "flex", flexDirection: "column" }}>
-                <Tooltip key={restaurant.id} title={restaurant.name} placement="top" arrow TransitionComponent={Zoom}>
+              <Box key={restaurant._id} sx={{ display: "flex", flexDirection: "column" }}>
+                <Tooltip key={restaurant._id} title={restaurant.name} placement="top" arrow TransitionComponent={Zoom}>
                   <Button
                     onClick={event => handleClick(event, restaurant)}
                     variant="outlined"
@@ -68,7 +68,7 @@ function RestaurantNav(props: RestaurantNavProps) {
                     {restaurant.name.charAt(0)}
                   </Button>
                 </Tooltip>
-                {selected === restaurant.id ? (
+                {selected === restaurant._id ? (
                   <Chip
                     aria-controls="menu-list-grow"
                     sx={{

@@ -22,21 +22,18 @@ export default function Dashboard() {
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <Grid container spacing={3}>
-          <Grid item lg={4} md={6} sm={6} xs={12}>
+          <Grid item lg={6} md={6} sm={6} xs={12}>
             <CardTurnover restaurant={restaurant} />
           </Grid>
-          <Grid item lg={4} md={6} sm={6} xs={12}>
+          <Grid item lg={6} md={6} sm={6} xs={12}>
             <CardSales restaurant={restaurant} />
-          </Grid>
-          <Grid item lg={4} md={12} sm={12} xs={12}>
-            <CardBestProduct restaurant={restaurant} />
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
-            <CardTurnoversProducts />
+            <CardTurnoversProducts restaurant={restaurant} />
           </Grid>
           <Grid item xs={12} md={4}>
             <CardPieChartProducts />

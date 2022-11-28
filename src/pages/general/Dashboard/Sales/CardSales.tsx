@@ -40,13 +40,9 @@ export default function CardSales(props: any) {
             </Grid>
           </Grid>
         </Grid>
-        {allSalesThisMonth > 1 ? (
-          <Grid item xs={12}>
-            <ChartSales allSalesThisMonth={allSalesThisMonth} />
-          </Grid>
-        ) : (
-          ""
-        )}
+        <Grid item xs={12}>
+          <ChartSales allSalesThisMonth={allSalesThisMonth} />
+        </Grid>
       </Grid>
     </MainCard>
   );

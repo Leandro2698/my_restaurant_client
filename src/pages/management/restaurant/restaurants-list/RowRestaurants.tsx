@@ -23,7 +23,7 @@ export default function RowRestaurants(props: RowRestaurantsProps) {
           <Avatar sx={{ mr: 2 }}>{restaurant.name.charAt(0)} </Avatar>
           <Link
             component={RouterLink}
-            to={`/restaurant/${restaurant.id}`}
+            to={`/restaurant/${restaurant._id}`}
             sx={{ textDecoration: "none", textTransform: "none", color: theme.palette.grey[100] }}
             underline="hover"
           >

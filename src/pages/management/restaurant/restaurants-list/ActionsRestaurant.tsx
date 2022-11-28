@@ -21,7 +21,7 @@ export default function ActionsRestaurant(props: ActionsRestaurantProps) {
   };
 
   const [deleteRestaurant, { error }] = useMutation<{ deleteRestaurant: any }>(DELETE_RESTAURANT, {
-    variables: { restaurantId: restaurant.id },
+    variables: { restaurantId: restaurant._id },
     refetchQueries: [
       {
         query: GET_ALL_RESTAURANTS,
@@ -39,7 +39,7 @@ export default function ActionsRestaurant(props: ActionsRestaurantProps) {
         </IconButton>
       </Tooltip>
       <Tooltip title="see">
-        <IconButton aria-label="see" size="small" component={Link} to={`/restaurant/${restaurant.id}`}>
+        <IconButton aria-label="see" size="small" component={Link} to={`/restaurant/${restaurant._id}`}>
           <Visibility />
         </IconButton>
       </Tooltip>

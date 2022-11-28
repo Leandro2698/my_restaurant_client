@@ -69,43 +69,35 @@ export default function CardTurnover(props: any) {
                 </Grid>
               </Grid>
             </Grid>
-            {allTurnoverThisMonth && allTurnoverThisYear > 1 ? (
-              <Grid item>
-                <Button
-                  disableElevation
-                  variant={timeValue === "month" ? "contained" : "text"}
-                  size="small"
-                  sx={{ color: timeValue === "month" ? "#fff" : "inherit" }}
-                  onClick={e => handleChangeTime(e, "month")}
-                >
-                  Month
-                </Button>
-                <Button
-                  disableElevation
-                  variant={timeValue === "year" ? "contained" : "text"}
-                  size="small"
-                  sx={{ color: timeValue === "year" ? "#fff" : "inherit" }}
-                  onClick={e => handleChangeTime(e, "year")}
-                >
-                  Year
-                </Button>
-              </Grid>
-            ) : (
-              ""
-            )}
+            <Grid item>
+              <Button
+                disableElevation
+                variant={timeValue === "month" ? "contained" : "text"}
+                size="small"
+                sx={{ color: timeValue === "month" ? "#fff" : "inherit" }}
+                onClick={e => handleChangeTime(e, "month")}
+              >
+                Month
+              </Button>
+              <Button
+                disableElevation
+                variant={timeValue === "year" ? "contained" : "text"}
+                size="small"
+                sx={{ color: timeValue === "year" ? "#fff" : "inherit" }}
+                onClick={e => handleChangeTime(e, "year")}
+              >
+                Year
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
-        {allTurnoverThisMonth && allTurnoverThisYear > 1 ? (
-          <Grid item xs={12}>
-            {timeValue === "year" ? (
-              <ChartTurnoverYear allTurnoverThisYear={allTurnoverThisYear} />
-            ) : (
-              <ChartTurnoverMonth allTurnoverThisMonth={allTurnoverThisMonth} />
-            )}
-          </Grid>
-        ) : (
-          ""
-        )}
+        <Grid item xs={12}>
+          {timeValue === "year" ? (
+            <ChartTurnoverYear allTurnoverThisYear={allTurnoverThisYear} />
+          ) : (
+            <ChartTurnoverMonth allTurnoverThisMonth={allTurnoverThisMonth} />
+          )}
+        </Grid>
       </Grid>
     </MainCard>
   );

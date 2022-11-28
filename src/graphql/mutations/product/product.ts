@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export const CREATE_PRODUCT = gql`
   mutation CreateProduct($restaurantId: ID!, $createProductInput: CreateProduct!) {
     createProduct(restaurantId: $restaurantId, createProductInput: $createProductInput) {
-      id
+      _id
       name
       products {
         id

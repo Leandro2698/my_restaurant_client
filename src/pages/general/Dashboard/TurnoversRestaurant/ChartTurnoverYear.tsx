@@ -3,8 +3,6 @@ import { ApexOptions } from "apexcharts";
 
 export default function ChartTurnoverYear(props: any) {
   const { allTurnoverThisYear } = props;
-
-  // !HELP ARNAUD
   const resultTurnoverYear = Array.from(
     allTurnoverThisYear.reduce(
       (m: any, { month, income }: any) => m.set(month, (m.get(month) || 0) + income),
@@ -12,7 +10,24 @@ export default function ChartTurnoverYear(props: any) {
     ),
     ([month, income]) => ({ month, income })
   );
-
+  function sortByMonth(arr: any) {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    arr.sort((a: any, b: any) => months.indexOf(a.month) - months.indexOf(b.month));
+  }
+  sortByMonth(resultTurnoverYear);
   const options: ApexOptions = {
     chart: {
       stacked: true,
@@ -58,5 +73,5 @@ export default function ChartTurnoverYear(props: any) {
     },
   ];
 
-  return <Chart type="line" height={150} options={options} series={series} />;
+  return <Chart type="line" height={190} options={options} series={series} />;
 }

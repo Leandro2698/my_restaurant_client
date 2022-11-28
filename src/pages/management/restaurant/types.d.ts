@@ -1,6 +1,6 @@
 export type Restaurant = {
+  _id: string;
   name: string;
-  id: string;
   turnover: string;
   sales: string;
 };

@@ -10,7 +10,6 @@ function RequireAuth() {
   const location = useLocation();
   const { user } = useContext(AuthContext);
   const [restaurants, setRestaurants] = useState([]);
-  console.log(`user`, user);
   if (user) {
     const { loading, data } = useQuery(GET_ALL_RESTAURANTS, {
       variables: { userId: user.id },
@@ -22,7 +21,6 @@ function RequireAuth() {
       }
     }, [data, loading]);
   }
-  console.log(`restaurants requireAuth`, restaurants);
 
   if (user) {
     return (

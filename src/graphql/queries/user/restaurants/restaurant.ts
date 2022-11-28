@@ -6,7 +6,7 @@ export const GET_ALL_RESTAURANTS = gql`
       id
       firstname
       restaurants {
-        id
+        _id
         name
         products {
           id
@@ -28,9 +28,6 @@ export const GET_ALL_RESTAURANTS = gql`
           }
           category
           status
-          # stock
-          # delivery
-          # omSite
         }
         turnoversRestaurantYear {
           id
@@ -46,7 +43,7 @@ export const GET_ALL_RESTAURANTS = gql`
 export const GET_ONE_RESTAURANT = gql`
   query GetRestaurant($restaurantId: ID!) {
     restaurant: getRestaurant(restaurantId: $restaurantId) {
-      id
+      _id
       name
       products {
         id
