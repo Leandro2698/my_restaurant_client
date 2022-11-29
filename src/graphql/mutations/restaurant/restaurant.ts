@@ -20,6 +20,7 @@ export const DELETE_RESTAURANT = gql`
   mutation DeleteRestaurant($restaurantId: ID!) {
     deleteRestaurant(restaurantId: $restaurantId) {
       _id
+      name
     }
   }
 `;

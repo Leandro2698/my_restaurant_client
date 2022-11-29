@@ -4,19 +4,43 @@ import { ApexOptions } from "apexcharts";
 export default function ChartTurnoversProducts(props: any) {
   const { turnoversByProduct } = props;
   console.log(`turturnoversByProduct`, turnoversByProduct);
-  const turnoversProduct = [];
+  const turnoversProductForChart = [];
   for (let i = 0; i < turnoversByProduct.length; i += 1) {
     const { turnovers } = turnoversByProduct[i];
-    for (let u = 0; u < turnovers.length; u += 1) {
-      console.log(`foo`, turnoversByProduct[i].name);
-      console.log(`foo`, turnovers[u].income);
-      // turnoversProduct.push({
-      //   name: turnoversByProduct[i].name,
-      //   month: turnoverThisMonth[u].month,
-      //   income: turnoverThisMonth[u].income,
-      // });
-    }
+    const map = turnovers.reduce(
+      (m: any, { month, income }: any) => m.set(month, (m.get(month) || 0) + income),
+      new Map()
+    );
+    const array = Array.from(map, ([month, income]) => ({ month, income }));
+
+    turnoversProductForChart.push({
+      data: array.map(e => e.income),
+      name: turnoversByProduct[i].name,
+    });
   }
+
+  function sortByMonth(arr: any) {
+    console.log(`arr`, arr);
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    arr.sort((a: any, b: any) => months.indexOf(a.month) - months.indexOf(b.month));
+  }
+  sortByMonth(turnoversProductForChart);
+  console.log(`array income`, turnoversProductForChart);
+  console.log(`all`, turnoversProductForChart);
+
   const options: ApexOptions = {
     chart: {
       stacked: true,
@@ -75,6 +99,17 @@ export default function ChartTurnoversProducts(props: any) {
     dataLabels: {
       enabled: false,
     },
+    tooltip: {
+      theme: "dark",
+      fixed: {
+        enabled: false,
+      },
+      y: {
+        formatter(val) {
+          return `$ ${val}`;
+        },
+      },
+    },
     yaxis: {
       labels: {
         style: {
@@ -87,21 +122,9 @@ export default function ChartTurnoversProducts(props: any) {
       // borderColor: "#F44336",
     },
   };
+  const series = turnoversProductForChart;
+  // console.log(`serseries`, series);
+  console.log(`turnoversProductForChart`, turnoversProductForChart);
 
-  const series = [
-    {
-      name: "product1",
-      data: [35, 125, 35, 35, 35, 80, 35, 20, 35, 45, 15, 75],
-    },
-    {
-      name: "product2",
-      data: [35, 15, 15, 35, 65, 40, 80, 25, 15, 85, 25, 75],
-    },
-    {
-      name: "product3",
-      data: [35, 145, 35, 35, 20, 105, 100, 10, 65, 45, 30, 10],
-    },
-  ];
-
-  return <Chart type="bar" height={480} options={options} series={series} />;
+  return <Chart type="bar" options={options} series={series} />;
 }

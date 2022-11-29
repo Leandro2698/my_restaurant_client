@@ -44,7 +44,7 @@ export default function ListRestaurants() {
     );
 
     restaurants.push({
-      id: restaurantsUser[i].id,
+      _id: restaurantsUser[i]._id,
       name: restaurantsUser[i].name,
       turnover: turnoverThisYear[0]?.turnoverYear,
       sales: turnoverThisYear[0]?.totalSales,

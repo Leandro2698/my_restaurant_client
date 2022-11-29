@@ -21,6 +21,7 @@ export default function CardTurnoversProducts(props: any) {
       });
     }
   }
+  console.log(`allallTurnovers`, allTurnovers);
   const turnoversByProduct = allTurnovers.reduce((agg: any, curr: any) => {
     const foundName: any = agg.find((x: any) => x.name === curr.name);
     if (foundName) {
@@ -41,6 +42,7 @@ export default function CardTurnoversProducts(props: any) {
     }
     return agg;
   }, []);
+  console.log(`turnoversByProduct`, turnoversByProduct);
 
   return (
     <MainCard header={false}>

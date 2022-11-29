@@ -10,6 +10,7 @@ import EditRestaurant from "./EditRestaurant";
 
 export default function ActionsRestaurant(props: ActionsRestaurantProps) {
   const { restaurant, userId } = props;
+  console.log(`restaurant`, restaurant);
   const [openEditDialog, setOpenEditDialog] = useState(false);
 
   const HandleOpenEditDialog = () => {

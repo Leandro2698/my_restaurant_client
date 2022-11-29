@@ -64,7 +64,7 @@ export const UPDATE_PRODUCT = gql`
 export const DELETE_PRODUCT = gql`
   mutation DeleteProduct($restaurantId: ID!, $productId: ID!) {
     deleteProduct(restaurantId: $restaurantId, productId: $productId) {
-      id
+      _id
     }
   }
 `;

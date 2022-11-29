@@ -20,7 +20,9 @@ const cache = new InMemoryCache({
   },
 });
 
-const httpLink = new HttpLink({ uri: process.env.BACK_URI || "https://adebray.com:4000" });
+// create variable environnement add readme
+// const httpLink = new HttpLink({ uri: process.env.BACK_URI || "https://adebray.com:4000" });
+const httpLink = new HttpLink({ uri: process.env.BACK_URI || "http://localhost:4010" });
 
 const authLink = setContext(() => {
   const token = localStorage.getItem("jwtToken");
