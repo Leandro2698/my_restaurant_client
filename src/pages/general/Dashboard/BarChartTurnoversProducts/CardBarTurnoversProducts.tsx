@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { Grid, Typography } from "@mui/material";
 import { format } from "date-fns";
 import MainCard from "../../../../components/Cards/MainCard";

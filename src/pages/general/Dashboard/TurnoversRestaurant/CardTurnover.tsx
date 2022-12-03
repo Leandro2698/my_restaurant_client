@@ -1,6 +1,5 @@
 /* eslint-disable no-empty */
-import { Paid } from "@mui/icons-material";
-import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { format } from "date-fns";
 import { useState } from "react";
 import MainCard from "../../../../components/Cards/MainCard";
@@ -39,7 +38,6 @@ export default function CardTurnover(props: any) {
       });
     }
   }
-  console.log(`allTurnoverThisMonth`, allTurnoverThisYear);
   const renderTotalTurnover = () => {
     const totalTurnoverMonth = allTurnoverThisMonth
       .map((e: any) => e.income)

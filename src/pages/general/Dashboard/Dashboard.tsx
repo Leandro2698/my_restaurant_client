@@ -1,6 +1,5 @@
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { Grid } from "@mui/material";
-// import { restaurantIdVar } from "../../../ApolloProvider";
 import { GET_ONE_RESTAURANT } from "../../../graphql/queries/user/restaurants/restaurant";
 import CardSales from "./Sales/CardSales";
 import CardTurnover from "./TurnoversRestaurant/CardTurnover";
@@ -35,7 +34,7 @@ export default function Dashboard() {
             <BarCardTurnoversProducts restaurant={restaurant} />
           </Grid>
           <Grid item xs={12} md={4}>
-            <CardPieChartProducts />
+            <CardPieChartProducts restaurant={restaurant} />
           </Grid>
         </Grid>
       </Grid>

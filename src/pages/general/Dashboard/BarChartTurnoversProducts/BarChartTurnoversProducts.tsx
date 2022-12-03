@@ -38,7 +38,6 @@ export default function BarChartTurnoversProducts(props: any) {
       name: turnoversByProduct[i].name,
     });
   }
-
   const finalResultTurnoverProduct = [];
   for (let i = 0; i < turnoversProduct.length; i += 1) {
     finalResultTurnoverProduct.push({
