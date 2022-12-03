@@ -1,16 +1,15 @@
 /* eslint-disable no-param-reassign */
-import { Paid } from "@mui/icons-material";
-import { Avatar, Box, Button, Grid, MenuItem, TextField, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { format } from "date-fns";
 import MainCard from "../../../../components/Cards/MainCard";
-import ChartTurnoversProducts from "./ChartTurnoversProducts";
+import BarChartTurnoversProducts from "./BarChartTurnoversProducts";
 
-export default function CardTurnoversProducts(props: any) {
+export default function BarCardTurnoversProducts(props: any) {
   const { restaurant } = props;
   const { products } = restaurant;
   const thisYear = new Date();
 
-  const allTurnovers = [];
+  const allTurnovers: any = [];
   for (let i = 0; i < products.length; i += 1) {
     const turnoverThisMonth = products[i].turnoversProductMonth.filter((e: any) => e.year === format(thisYear, "yyyy"));
     for (let u = 0; u < turnoverThisMonth.length; u += 1) {
@@ -21,7 +20,6 @@ export default function CardTurnoversProducts(props: any) {
       });
     }
   }
-  console.log(`allallTurnovers`, allTurnovers);
   const turnoversByProduct = allTurnovers.reduce((agg: any, curr: any) => {
     const foundName: any = agg.find((x: any) => x.name === curr.name);
     if (foundName) {
@@ -42,7 +40,12 @@ export default function CardTurnoversProducts(props: any) {
     }
     return agg;
   }, []);
-  console.log(`turnoversByProduct`, turnoversByProduct);
+  const renderTotalTurnover = () => {
+    const totalTurnoverYear = allTurnovers
+      .map((e: any) => e.income)
+      .reduce((accumulator: any, value: any) => accumulator + value, 0);
+    return `$${totalTurnoverYear}`;
+  };
 
   return (
     <MainCard header={false}>
@@ -55,14 +58,14 @@ export default function CardTurnoversProducts(props: any) {
                   <Typography variant="subtitle2">Total Growth</Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="h3">$2,324.00</Typography>
+                  <Typography variant="h3">{renderTotalTurnover()}</Typography>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <ChartTurnoversProducts turnoversByProduct={turnoversByProduct} />
+          <BarChartTurnoversProducts turnoversByProduct={turnoversByProduct} />
         </Grid>
       </Grid>
     </MainCard>

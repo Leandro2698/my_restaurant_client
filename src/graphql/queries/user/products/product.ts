@@ -6,7 +6,6 @@ export const GET_ALL_PRODUCTS = gql`
       id
       name
       unitSalePrice
-      stock
       turnoversProductMonth {
         id
         income
@@ -23,8 +22,6 @@ export const GET_ALL_PRODUCTS = gql`
       }
       category
       status
-      delivery
-      omSite
     }
   }
 `;
@@ -34,7 +31,6 @@ export const GET_ONE_PRODUCT = gql`
       id
       name
       unitSalePrice
-      stock
       turnoversProductMonth {
         id
         income
@@ -51,8 +47,6 @@ export const GET_ONE_PRODUCT = gql`
       }
       category
       status
-      delivery
-      omSite
     }
   }
 `;

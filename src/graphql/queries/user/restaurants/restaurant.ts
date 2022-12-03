@@ -49,7 +49,6 @@ export const GET_ONE_RESTAURANT = gql`
         id
         name
         unitSalePrice
-        stock
         turnoversProductMonth {
           id
           income
@@ -65,8 +64,6 @@ export const GET_ONE_RESTAURANT = gql`
         }
         category
         status
-        delivery
-        omSite
       }
       turnoversRestaurantYear {
         id

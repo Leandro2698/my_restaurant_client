@@ -2,12 +2,11 @@ import { useQuery, useReactiveVar } from "@apollo/client";
 import { Grid } from "@mui/material";
 // import { restaurantIdVar } from "../../../ApolloProvider";
 import { GET_ONE_RESTAURANT } from "../../../graphql/queries/user/restaurants/restaurant";
-import CardBestProduct from "./BestProduct/CardBestProduct";
 import CardSales from "./Sales/CardSales";
 import CardTurnover from "./TurnoversRestaurant/CardTurnover";
-import CardTurnoversProducts from "./TurnoversProducts/CardTurnoversProducts";
 import CardPieChartProducts from "./pieChartProducts/CardPieChartProducts";
 import { restaurantIdVar } from "../../../reactiveVars";
+import BarCardTurnoversProducts from "./BarChartTurnoversProducts/CardBarTurnoversProducts";
 
 export default function Dashboard() {
   const restaurantId = useReactiveVar(restaurantIdVar);
@@ -33,7 +32,7 @@ export default function Dashboard() {
       <Grid item xs={12}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
-            <CardTurnoversProducts restaurant={restaurant} />
+            <BarCardTurnoversProducts restaurant={restaurant} />
           </Grid>
           <Grid item xs={12} md={4}>
             <CardPieChartProducts />

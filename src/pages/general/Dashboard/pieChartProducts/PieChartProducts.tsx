@@ -24,5 +24,5 @@ export default function PieChartProducts() {
 
   const series = [44, 55, 13, 43, 22];
 
-  return <Chart type="pie" options={options} series={series} />;
+  return <Chart type="pie" height={300} options={options} series={series} />;
 }

@@ -9,7 +9,6 @@ export const CREATE_PRODUCT = gql`
         id
         name
         unitSalePrice
-        stock
         turnoversProductMonth {
           id
           income
@@ -25,8 +24,6 @@ export const CREATE_PRODUCT = gql`
         }
         category
         status
-        delivery
-        omSite
       }
     }
   }
@@ -38,7 +35,6 @@ export const UPDATE_PRODUCT = gql`
         id
         name
         unitSalePrice
-        stock
         turnoversProductMonth {
           id
           income
@@ -54,8 +50,6 @@ export const UPDATE_PRODUCT = gql`
         }
         category
         status
-        delivery
-        omSite
       }
     }
   }

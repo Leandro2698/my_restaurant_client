@@ -9,7 +9,7 @@ import ChartTurnoverYear from "./ChartTurnoverYear";
 
 export default function CardTurnover(props: any) {
   const { restaurant } = props;
-  const [timeValue, setTimeValue] = useState("month");
+  const [timeValue, setTimeValue] = useState("year");
 
   const handleChangeTime = (event: any, time: string) => {
     setTimeValue(time);
@@ -39,7 +39,7 @@ export default function CardTurnover(props: any) {
       });
     }
   }
-
+  console.log(`allTurnoverThisMonth`, allTurnoverThisYear);
   const renderTotalTurnover = () => {
     const totalTurnoverMonth = allTurnoverThisMonth
       .map((e: any) => e.income)
