@@ -23,7 +23,7 @@ const cache = new InMemoryCache({
 // create variable environnement add readme
 // const httpLink = new HttpLink({ uri: process.env.BACK_URI || "https://adebray.com:4000" });
 // console.log(`window.location`, window.location.host.match(/(.*):/)[1]);
-const hostnameRegex = window.location.host.match(/([\w\.]*):?/);
+const hostnameRegex = window.location.host.match(/([\w.]*):?/);
 let hostname = "localhost";
 if (hostnameRegex) {
   [, hostname] = hostnameRegex;
