@@ -23,12 +23,13 @@ const cache = new InMemoryCache({
 // create variable environnement add readme
 // const httpLink = new HttpLink({ uri: process.env.BACK_URI || "https://adebray.com:4000" });
 // console.log(`window.location`, window.location.host.match(/(.*):/)[1]);
+console.log(`window.location`);
 const hostnameRegex = window.location.host.match(/([\w.]*):?/);
 let hostname = "localhost";
 if (hostnameRegex) {
   [, hostname] = hostnameRegex;
 }
-const httpLink = new HttpLink({ uri: process.env.BACK_URI || `http://${hostname}:4010` });
+const httpLink = new HttpLink({ uri: process.env.BACK_URI || `${window.location.protocol}//${hostname}:4010` });
 
 const authLink = setContext(() => {
   const token = localStorage.getItem("jwtToken");
