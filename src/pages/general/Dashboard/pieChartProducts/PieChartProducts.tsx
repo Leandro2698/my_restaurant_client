@@ -16,6 +16,7 @@ export default function PieChartProducts(props: any) {
       type: "pie",
     },
     labels: turnoversByProduct.map((e: any) => e.name),
+    colors: ["#001e47", "#5048e5", "#008FFB"],
     responsive: [
       {
         breakpoint: 480,

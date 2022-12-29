@@ -57,7 +57,7 @@ export default function ListProducts() {
       <MainCard
         title="List Products"
         action={
-          <IconButton onClick={handleClickAdd} sx={{ bgcolor: theme.palette.secondary.light, color: "#fff" }}>
+          <IconButton onClick={handleClickAdd} sx={{ bgcolor: "#3C3EBE", color: "#fff" }}>
             <Add />
           </IconButton>
         }

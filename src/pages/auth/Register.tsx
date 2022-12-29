@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 // @mui
 import { styled } from "@mui/material/styles";
-import { Link, Container, Typography } from "@mui/material";
+import { Link, Container, Typography, Box } from "@mui/material";
 import RegisterForm from "./auth-forms/RegisterForm";
 import Logo from "../../components/Logo";
 
@@ -36,7 +36,9 @@ function Register() {
       <Container maxWidth="sm">
         <ContentStyle>
           <HeaderStyle>
-            <Logo />
+            <Box sx={{ display: "flex", paddingLeft: "60px" }}>
+              <Logo />
+            </Box>
 
             <Typography variant="h4" gutterBottom>
               Register

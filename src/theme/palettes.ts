@@ -3,6 +3,7 @@ export const palettes = {
   lightBlue: "#5048E5",
   LittleBlue: "#749BD2",
   lightGreen: "#1EAE70",
+  myRed: "#f72585",
   darkGreen: "#267D59",
   black200: "#9BA2AB",
   black100: "#212121",

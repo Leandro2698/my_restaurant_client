@@ -73,7 +73,7 @@ function RestaurantNav(props: RestaurantNavProps) {
                     aria-controls="menu-list-grow"
                     sx={{
                       transition: "all .2s ease-in-out",
-                      backgroundColor: theme.palette.secondary.light,
+                      backgroundColor: "#f72585",
                       "& .MuiChip-label": {
                         lineHeight: 0,
                       },
@@ -88,7 +88,7 @@ function RestaurantNav(props: RestaurantNavProps) {
             ))
           : ""}
       </Box>
-      <IconButton sx={{ bgcolor: theme.palette.secondary.light, color: "#fff" }} onClick={handleClickAdd}>
+      <IconButton sx={{ bgcolor: "#5048e5", color: "#fff" }} onClick={handleClickAdd}>
         <Add />
       </IconButton>
       <AddRestaurantNav handleClose={handleCloseDialog} open={open} userId={user?.id} />

@@ -42,12 +42,9 @@ export default function BarChartTurnoversProducts(props: any) {
   for (let i = 0; i < turnoversProduct.length; i += 1) {
     finalResultTurnoverProduct.push({
       name: turnoversProduct[i].name,
-      data: turnoversProduct[i].data
-        // .sort((a: any, b: any) => months.indexOf(a.month) - months.indexOf(b.month))
-        .map((e: any) => e.income),
+      data: turnoversProduct[i].data.map((e: any) => e.income),
     });
   }
-
   const options: ApexOptions = {
     chart: {
       stacked: true,
@@ -76,7 +73,7 @@ export default function BarChartTurnoversProducts(props: any) {
         columnWidth: "50%",
       },
     },
-    colors: ["#29c784", "#2ddb91", "#486dd0", "#5048e5", "#001e47"],
+    colors: ["#001e47", "#5048e5", "#008FFB"],
     xaxis: {
       type: "category",
       categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],

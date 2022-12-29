@@ -1,5 +1,5 @@
 import { Delete, Edit, PointOfSale, Visibility } from "@mui/icons-material";
-import { IconButton, Tooltip } from "@mui/material";
+import { Box, Button, IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { useContext, useState } from "react";
@@ -44,9 +44,13 @@ export default function ActionsProduct(props: any) {
   return (
     <>
       <Tooltip title="Add sales">
-        <IconButton onClick={HandleOpenSalesDialog} size="small" sx={{ mr: 2 }}>
+        <Button onClick={HandleOpenSalesDialog} variant="contained" sx={{ mr: "10px" }}>
+          {" "}
+          Add sales{" "}
+        </Button>
+        {/* <IconButton onClick={HandleOpenSalesDialog} size="small" sx={{ mr: 2 }}>
           <PointOfSale fontSize="small" />
-        </IconButton>
+        </IconButton> */}
       </Tooltip>
       <Tooltip title="Edit">
         <IconButton onClick={HandleOpenEditDialog} size="small" sx={{ mr: 2 }}>

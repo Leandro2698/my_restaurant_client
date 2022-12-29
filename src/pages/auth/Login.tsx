@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 // @mui
 import { styled } from "@mui/material/styles";
-import { Link, Container, Typography } from "@mui/material";
+import { Link, Container, Typography, Box } from "@mui/material";
 
 import LoginForm from "./auth-forms/LoginForm";
 import Logo from "../../components/Logo";
@@ -39,15 +39,16 @@ function Login() {
       <Container maxWidth="sm">
         <ContentStyle>
           <HeaderStyle>
-            <Logo />
+            <Box sx={{ display: "flex", paddingLeft: "60px" }}>
+              <Logo />
+            </Box>
             <Typography variant="h4" gutterBottom>
               Log in
             </Typography>
-            <Typography sx={{ color: "text.secondary", mb: 5 }}>Enter your details below.</Typography>
+
+            <Typography sx={{ color: "text.secondary", mb: 5 }}>Sign in with Email address</Typography>
           </HeaderStyle>
-
           <LoginForm />
-
           <Typography variant="body2" align="center" sx={{ mt: 3 }}>
             Don’t have an account?{" "}
             <Link variant="subtitle2" component={RouterLink} to="/register">
