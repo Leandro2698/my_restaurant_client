@@ -21,6 +21,7 @@ export default function Dashboard() {
       <Grid item xs={12}>
         <Grid container spacing={3}>
           <Grid item lg={6} md={6} sm={6} xs={12}>
+            Hello new deploy
             <CardTurnover restaurant={restaurant} />
           </Grid>
           <Grid item lg={6} md={6} sm={6} xs={12}>

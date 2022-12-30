@@ -30,7 +30,6 @@ function Header(props: HeaderProps) {
             },
           }}
         >
-          Hello new deploy
           <Box component="span" sx={{ display: { xs: "none", md: "flex", alignItems: "center" }, flexGrow: 1 }}>
             <ButtonBase disableRipple component={Link} to="/">
               <Logo />
