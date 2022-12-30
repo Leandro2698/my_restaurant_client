@@ -31,7 +31,7 @@ export default function CardSales(props: any) {
             <Grid item>
               <Grid container direction="column" spacing={1}>
                 <Grid item>
-                  <Typography variant="subtitle2">Total sales this year</Typography>
+                  <Typography variant="h5">Total sales this year</Typography>
                 </Grid>
                 <Grid item>
                   <Typography variant="h3"> {totalSalesYear}</Typography>

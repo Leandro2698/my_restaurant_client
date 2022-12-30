@@ -60,7 +60,7 @@ export default function CardTurnover(props: any) {
             <Grid item>
               <Grid container direction="column" spacing={1}>
                 <Grid item>
-                  <Typography variant="subtitle2">Turnover this {timeValue}</Typography>
+                  <Typography variant="h5">Turnover this {timeValue}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography variant="h3"> {renderTotalTurnover()}</Typography>
