@@ -20,15 +20,15 @@ function RequireAuth() {
         setRestaurants(data.getUser.restaurants);
       }
     }, [data, loading]);
+    if (loading) return <p>Loading</p>;
   }
-
   if (user) {
     return (
       <RestaurantProvider userRestaurants={restaurants}>
-        <Outlet />
+        <Outlet data-testid="OutletRouter" />
       </RestaurantProvider>
     );
   }
-  return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Navigate data-testid="NavigateRouter" to="/login" state={{ from: location }} replace />;
 }
 export default RequireAuth;

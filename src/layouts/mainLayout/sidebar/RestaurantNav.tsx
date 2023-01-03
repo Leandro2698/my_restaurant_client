@@ -17,7 +17,10 @@ function RestaurantNav(props: RestaurantNavProps) {
   const { user } = useContext(AuthContext);
   const [selected, setSelected] = useState(restaurantId);
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
+
+  console.log(`restaurantrestaurants`, restaurants);
+  // console.log(`restaurantrestaurants`, restaurants?.length);
+
   if (restaurants.length > 0 && restaurantId === "") {
     restaurantIdVar(restaurants[0]._id);
     setSelected(restaurants[0]._id);
