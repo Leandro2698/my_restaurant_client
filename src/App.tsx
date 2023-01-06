@@ -8,15 +8,15 @@ import { restaurantIdVar } from "./reactiveVars";
 
 const cache = new InMemoryCache({
   typePolicies: {
-    Query: {
-      fields: {
-        restaurantSelected: {
-          read() {
-            return restaurantIdVar();
-          },
-        },
-      },
-    },
+    // Query: {
+    //   fields: {
+    //     restaurantSelected: {
+    //       read() {
+    //         return restaurantIdVar();
+    //       },
+    //     },
+    //   },
+    // },
   },
 });
 

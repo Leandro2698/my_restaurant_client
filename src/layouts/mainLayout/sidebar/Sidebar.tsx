@@ -22,6 +22,7 @@ import { SidebarData } from "./SidebarData";
 function Sidebar(props: SidebarProps) {
   const { drawerWidth, drawerOpen, drawerToggle } = props;
   const { userRestaurants }: any = useContext(RestaurantContext);
+  console.log(`userRestaurants`, userRestaurants);
   const location = useLocation();
 
   const theme = useTheme();
