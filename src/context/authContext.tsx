@@ -55,8 +55,6 @@ function AuthProvider(props: AuthProps) {
   function logout() {
     dispach({ type: "LOGOUT" });
     localStorage.removeItem("jwtToken");
-    localStorage.removeItem("restaurantId");
-    restaurantIdVar("");
   }
 
   return <AuthContext.Provider value={{ user: state.user, login, logout }} {...props} />;

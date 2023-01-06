@@ -18,9 +18,6 @@ function RestaurantNav(props: RestaurantNavProps) {
   const [selected, setSelected] = useState(restaurantId);
   const [open, setOpen] = useState(false);
 
-  console.log(`restaurantrestaurants`, restaurants);
-  // console.log(`restaurantrestaurants`, restaurants?.length);
-
   if (restaurants.length > 0 && restaurantId === "") {
     restaurantIdVar(restaurants[0]._id);
     setSelected(restaurants[0]._id);
@@ -91,9 +88,21 @@ function RestaurantNav(props: RestaurantNavProps) {
             ))
           : ""}
       </Box>
-      <IconButton sx={{ bgcolor: "#5048e5", color: "#fff" }} onClick={handleClickAdd}>
-        <Add />
-      </IconButton>
+      <Tooltip title="Add a restaurant">
+        <IconButton
+          sx={{
+            bgcolor: "#5048e5",
+            color: "#fff",
+            "&:hover": {
+              backgroundColor: "#f72585",
+              boxShadow: "none",
+            },
+          }}
+          onClick={handleClickAdd}
+        >
+          <Add />
+        </IconButton>
+      </Tooltip>
       <AddRestaurantNav handleClose={handleCloseDialog} open={open} userId={user?.id} />
     </>
   );
